@@ -1,0 +1,64 @@
+/************************************************************************
+ *
+ * File: BlackJack.RC
+ *
+ * Main resource script for BlackJack
+ *
+ ************************************************************************/
+#include    <os2.h>
+#include    "BlackJack.H"
+#include    "BlackJackRC.H"
+
+ICON    MainFrame     "BlackJack.ICO"
+
+BITMAP  Chip5Bitmap "5Dollar.BMP"
+
+MENU MainFrame
+BEGIN
+    SUBMENU     "~Game", MainGame
+    BEGIN
+        MENUITEM    "New", MainGameNew
+        MENUITEM    "Add $100", MainGameAdd100
+        MENUITEM    "Cash Out", MainGameCashOut
+        MENUITEM    SEPARATOR
+        MENUITEM    "E~xit", MainGameExit
+    END
+    SUBMENU     "~Options", MainOptions
+    BEGIN
+        SUBMENU     "Sound", MainOptionsSound
+        BEGIN
+            MENUITEM    "On", MainSoundOn, MIA_CHECKED
+            MENUITEM    "Off", MainSoundOff
+        END
+        MENUITEM    "Stats...", MainOptionsStats
+        MENUITEM    "Rules...", MainOptionsRules
+    END
+END
+
+ACCELTABLE  MainFrame
+BEGIN
+    "x",    MainGameExit, ALT
+END
+
+STRINGTABLE MainFrame
+BEGIN
+    PMT_BASE+PMT_APPNAME    "Blackjack"
+    PMT_BASE+PMT_VERSION        "v1.00"
+    PMT_BASE+PMT_NODECK     "Cannot load deck library!"
+    PMT_BASE+PMT_NODECK_TITLE   "Error!"
+    PMT_BASE+PMT_BLACKJACK  "Blackjack!"
+    PMT_BASE+PMT_BUST       "Bust!"
+    PMT_BASE+PMT_HIT        "~Hit"
+    PMT_BASE+PMT_STAND      "~Stand"
+    PMT_BASE+PMT_DOUBLE     "~Double"
+    PMT_BASE+PMT_SPLIT          "S~plit"
+    PMT_BASE+PMT_DEAL               "Deal"
+    PMT_BASE+PMT_ADVICE         "Advice"
+    PMT_BASE+PMT_BANK           "Bank"
+    PMT_BASE+PMT_PUSH           "Push"
+    PMT_BASE+PMT_LOSE           "Lose"
+    PMT_BASE+PMT_WIN                "Win"
+    PMT_BASE+PMT_INSURANCE      "Do you want insurance?"
+END
+
+rcinclude   "BlackJack.dlg"

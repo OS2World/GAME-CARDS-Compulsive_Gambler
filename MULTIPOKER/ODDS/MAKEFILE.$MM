@@ -1,0 +1,28 @@
+:TARGET.SUFFIXES
+:TARGET.SUFFIXES
+:DEPENDENCY..C .obj 
+:TARGET.all
+:DEPENDENCY.
+.\Odds.exe
+:RULE..C.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /O /G5 /C %s
+:RULE.{G:\Programming\Programs\C\CGT\MultiPoker\Odds}.C.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /O /G5 /C %s
+:TARGET..\Odds.exe
+:DEPENDENCY.
+.\Odds.obj
+:ACTION.Link::Linker
+:COMMAND.
+icc.exe @<<
+ /FeOdds.exe 
+ .\Odds.obj
+<<
+:TARGET..\Odds.obj
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\MultiPoker\Odds\Odds.C
+{G:\Programming\Programs\C\CGT\MultiPoker\Odds;$(INCLUDE);}Odds.H
+{G:\Programming\Programs\C\CGT\MultiPoker\Odds;$(INCLUDE);}MPokerDLL.H

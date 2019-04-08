@@ -1,0 +1,139 @@
+
+/* OS/2 Warp Resource Script File - Created by Integrated Resource Editor */
+
+#define INCL_WINSYS
+#define INCL_WINBIDI
+#define INCL_WINSTDDLGS
+#define INCL_WINSTDSPIN
+#define INCL_NLS
+#define INCL_SW
+
+#include <os2.h>
+
+#include "CPoker.h"
+
+ICON        MainWindow "CPoker.ICO"
+MENU MainWindow
+BEGIN
+
+    SUBMENU "~Game",                   IDM_GAME, MIS_TEXT
+    BEGIN
+        MENUITEM "Stud",               IDM_STUD, MIS_TEXT, MIA_CHECKED
+        MENUITEM "Draw",               IDM_DRAW, MIS_TEXT
+        MENUITEM SEPARATOR
+        MENUITEM "E~xit",              IDM_EXIT, MIS_TEXT
+    END
+
+    SUBMENU "~Cash",                   IDM_CASH, MIS_TEXT
+    BEGIN
+        MENUITEM "Add $100",           IDM_ADD, MIS_TEXT
+        MENUITEM "Cash Out",           IDM_CASHOUT, MIS_TEXT
+    END
+
+    SUBMENU "~Help",                   IDM_HELP, MIS_TEXT
+    BEGIN
+        MENUITEM "Help ~index",        IDM_HELPINDEX, MIS_TEXT
+        MENUITEM SEPARATOR
+        MENUITEM "About...",           IDM_ABOUT, MIS_TEXT
+    END
+END
+
+WINDOWTEMPLATE MainWindow 850
+BEGIN
+    WINDOW "Caribbean Poker v1.00", MainWindow, 4, 30, 464, 262, WC_FRAME,
+                FS_NOBYTEALIGN | FS_SIZEBORDER | WS_CLIPSIBLINGS | WS_SAVEBITS |
+                WS_VISIBLE, FCF_TITLEBAR | FCF_SYSMENU | FCF_MENU | FCF_MINMAX |
+                FCF_ACCELTABLE
+    BEGIN
+    END
+END
+
+CODEPAGE 850
+STRINGTABLE MOVEABLE DISCARDABLE
+BEGIN
+    PMT_ANTE,                           "~Ante"
+    PMT_BET,                            "~Bet"
+    PMT_FOLD,                           "~Fold"
+    PMT_ADVICE,                         "A~dvice"
+    CPOKER_PMT_APPNAME,                 "Caribbean Poker"
+    CPOKER_PMT_VERSION,                 "v1.00"
+    PMT_AUTO,                           "Auto"
+    PMT_BANK,                           "Bank: $"
+    PMT_PAYOUT,                         "Player paid $"
+    PMT_PROGPAYOUT,                     "Progressive pays $"
+    HANDNAME_INDEX,                     "Nothing"
+    528,                                "Ace/King"
+    544,                                "Pair of Deuces"
+    560,                                "Two Pair"
+    576,                                "Three Deuces"
+    592,                                "Straight"
+    608,                                "Flush"
+    624,                                "Full House"
+    640,                                "Four Deuces"
+    656,                                "Straight Flush"
+    672,                                "Royal Flush"
+    545,                                "Pair of Threes"
+    546,                                "Pair of Fours"
+    547,                                "Pair of Fives"
+    548,                                "Pair of Sixes"
+    549,                                "Pair of Sevens"
+    550,                                "Pair of Eights"
+    551,                                "Pair of Nines"
+    552,                                "Pair of Tens"
+    553,                                "Pair of Jacks"
+    554,                                "Pair of Queens"
+    555,                                "Pair of Kings"
+    556,                                "Pair of Aces"
+    577,                                "Three Threes"
+    578,                                "Three Fours"
+    579,                                "Three Fives"
+    580,                                "Three Sixes (a ""Tony"")"
+    581,                                "Three Sevens"
+    582,                                "Three Eights"
+    583,                                "Three Nines (Tony hanging from a tree)"
+    584,                                "Three Tens"
+    585,                                "Three Jacks"
+    586,                                "Three Queens"
+    587,                                "Three Kings"
+    588,                                "Three Aces"
+    595,                                "Straight (Five high)"
+    596,                                "Straight (Six high)"
+    597,                                "Straight (Seven high)"
+    598,                                "Straight (Eight high)"
+    599,                                "Straight (Nine high)"
+    600,                                "Straight (Ten high)"
+    601,                                "Straight (Jack high)"
+    602,                                "Straight (Queen high)"
+    603,                                "Straight (King high)"
+    604,                                "Straight (Ace high)"
+    641,                                "Four Threes"
+    642,                                "Four Fours"
+    643,                                "Four Fives"
+    644,                                "Four Sixes"
+    645,                                "Four Sevens"
+    646,                                "Four Eights"
+    647,                                "Four Nines"
+    648,                                "Four Tens"
+    649,                                "Four Jacks"
+    650,                                "Four Queens"
+    651,                                "Four Kings"
+    652,                                "Four Aces"
+    659,                                "Straight Flush (Five high)"
+    660,                                "Straight Flush (Six high)"
+    661,                                "Straight Flush (Seven high)"
+    662,                                "Straight Flush (Eight high)"
+    663,                                "Straight Flush (Nine high)"
+    664,                                "Straight Flush (Ten high)"
+    665,                                "Straight Flush (Jack high)"
+    666,                                "Straight Flush (Queen high)"
+    667,                                "Straight Flush (King high)"
+    CPOKER_PMT_CARIBBEANSTUD,           "Caribbean Poker v1.00 - Stud"
+    CPOKER_PMT_CARIBBEANDRAW,           "Caribbean Poker v1.00 - Draw"
+    PMT_JACKPOT,                        "Jackpot: $"
+END
+BITMAP      BMP_PROGEMPTY "ProgEmpty.BMP"
+BITMAP      BMP_PROGFULL "ProgFull.BMP"
+BITMAP      BMP_ANTE "Ante.BMP"
+BITMAP      BMP_BET "Bet.BMP"
+BITMAP      BMP_EMPTY "Empty.BMP"
+

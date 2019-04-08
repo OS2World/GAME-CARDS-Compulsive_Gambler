@@ -1,0 +1,87 @@
+MultiPoker library interfaces, January 21st, 1999
+
+Every poker game will use a DLL to play the actual game.  The main program
+will provide the graphical interface, money counting, and any logging.
+
+The following resources will be available from the game DLL:
+
+
+Strings:
+
+DName - Name of the game (ex. "Jacks or better")
+
+DVersion - Version of the DLL (ex. "1.0")
+
+DDVersion - DLL interface version (ex. "1.0")
+
+DNumDeck - Number of decks to use (ex "1").  Defaults to 1
+
+DDeck - Type of deck to use (default "Standard")
+
+DHand[0..?] - Name of hands.  All hands above zero are displayed above the
+    play area.  It is assumed that hands have ascending payouts.  A maximum
+    of 32 hands are supported.  The first hand name (above zero) which is null
+    indicates the number of possible hand types.
+
+DPayout[][] - Payouts of hands.  A series of six character strings indicating the
+    payouts of hands based on the bet value.  Currently, bet values of 1-5 are
+    supported.
+
+
+Icons:
+
+DIcon - Icon representing the game in play.
+
+Exported Functions:
+
+Cards are represented across the DLL calls as ascending bytes.  The main
+program randomly selects values between 1 and number of cards.
+DLLs may internally convert the value for efficiency purposes.  In multiple deck
+games, the same card byte value may appear twice.
+
+
+BYTE EXPENTRY HandValue(BYTE Hand[])
+
+Returns the value of the hand.  Hand should point to a null terminated array
+of cards.  Hand may contain more cards than required by the DLL, but not
+fewer.
+
+An error returns -1.
+
+double EXPENTRY CalcOdds(BYTE Hand[], BYTE Action, BYTE Bet, double Odds[])
+
+Computes the odds of getting each hand type based on the selected action.
+Fills array Odds[] with the probabilities of each hand type.  Using Bet, it also
+computes the aggregate likely payout for the action as the return value.
+
+A DLL may optionally export this function.  If it does not, it should return -1
+
+
+Deck DLLs
+
+Every game DLL references its deck via another DLL.  The game DLL does not
+load the deck, but allows the main application to reference the deck from the
+deck's name.
+
+For example, the standard 52 card deck is defined in Standard.DLL, which is
+dynamically loaded by the main application when a game is selected.  A deck
+DLL contains no code, simply resources.  The following resource indexes are
+defined:
+
+Bitmap 1 - The first card in the deck.  In the case of a standard deck, this
+is the two of clubs.  The order of cards, including suits, is NOT arbitrary;
+the ordinal of each card's bitmap corresponds to the card's number as
+represented to the game DLL.
+
+Every card is assigned a bitmap, up until the maximum, which is presently 1023
+
+String 1024 - String indicating the number of cards in the deck.  Somewhat
+redundant, since an application can determine the highest assigned bitmap
+ordinal, which equals the number of cards (ex. Standard.DLL has bitmaps 1-52
+defined).  If this string is absent, 52 is assumed.
+
+Bitmap 2048 - Card back.  A deck may define more card backs simply by
+using higher ordinal numbers.  The application can determine how many card
+backs are defined.  Applications will default to use of Bitmap #2048 as the
+card back.  A deck is not strictly required to define any card backs.
+

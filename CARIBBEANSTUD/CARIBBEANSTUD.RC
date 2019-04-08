@@ -1,0 +1,73 @@
+/************************************************************************
+ *
+ * File: CaribbeanStud.RC
+ *
+ * This is the resource script for Caribbean Stud poker.
+ *
+ ************************************************************************/
+#include    <os2.h>
+#include    "CaribbeanStud.H"
+#include    "CaribbeanStudRC.H"
+
+ICON    MainFrame   "CaribbeanStud.ICO"
+BITMAP    BitmapProgEmpty   "ProgEmpty.BMP"
+BITMAP    BitmapProgFull        "ProgFull.BMP"
+
+BITMAP  BitmapBet   "Bet.BMP"
+BITMAP  BitmapAnte  "Ante.BMP"
+BITMAP  BitmapEmpty "Empty.BMP"
+
+MENU    MainFrame
+BEGIN
+    SUBMENU     "~Game", MainGame
+    BEGIN
+        MENUITEM    "New", MainGameNew
+        MENUITEM    SEPARATOR
+        MENUITEM    "E~xit", MainGameExit
+    END
+    SUBMENU     "Help", MainHelp
+    BEGIN
+        MENUITEM    "Index",    MainHelpIndex
+        MENUITEM    "About...", MainHelpAbout
+    END
+END
+
+STRINGTABLE MainFrame
+BEGIN
+    PROMPT_BASE+PMT_APPNAME     "Caribbean Stud Poker"
+    PROMPT_BASE+PMT_VERSION     "v1.30a"
+    PROMPT_BASE+PMT_ANTETITLE   "Ante->"
+    PROMPT_BASE+PMT_BETTITLE        "Bet->"
+    PROMPT_BASE+PMT_DEALERNAME  "Sarah"
+    PROMPT_BASE+PMT_FOLD            "Fold"
+    PROMPT_BASE+PMT_BET             "Bet"
+    PROMPT_BASE+PMT_RESETSTAT   "Are you sure you want to reset all statistics?"
+    PROMPT_BASE+PMT_RESETSTATTITLE  "Warning!"
+    HAND_BASE+NOTHING       "Nothing"
+    HAND_BASE+ACE_KING      "Ace/King"
+    HAND_BASE+PAIR                  "Pair"
+    HAND_BASE+TWO_PAIR      "Two Pair"
+    HAND_BASE+THREE_OF_A_KIND       "Three of a kind"
+    HAND_BASE+STRAIGHT          "Straight"
+    HAND_BASE+FLUSH             "Flush"
+    HAND_BASE+FULL_HOUSE        "Full House"
+    HAND_BASE+FOUR_OF_A_KIND        "Four of a kind"
+    HAND_BASE+STRAIGHT_FLUSH        "Straight Flush"
+    HAND_BASE+ROYAL_FLUSH           "Royal Flush"
+END
+
+ACCELTABLE  MainFrame
+BEGIN
+/*    "a",    MainDlgAnte
+    "A",    MainDlgAnte
+    "b",    MainDlgBet
+    "B",    MainDlgBet
+    "f",    MainDlgFold
+    "F",    MainDlgFold
+    "v",    MainDlgAdvice
+    "V",    MainDlgAdvice */
+    VK_F1,  MainDlgHelp,    VIRTUALKEY, HELP
+    " ",    MainDlgProgressive
+END
+
+rcinclude   "CaribbeanStud.dlg"

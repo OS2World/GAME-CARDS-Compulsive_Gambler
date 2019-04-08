@@ -1,0 +1,55 @@
+# makefile
+# Created by IBM WorkFrame/2 MakeMake at 20:18:36 on 8 Feb 1999
+#
+# The actions included in this make file are:
+#  Compile::C++ Compiler
+#  Link::Linker
+#  Bind::Resource Bind
+#  Compile::Resource Compiler
+
+.SUFFIXES:
+
+.SUFFIXES: \
+    .C .RC .obj .res 
+
+.C.obj:
+    @echo " Compile::C++ Compiler "
+    icc.exe /I.. /O /Ge- /G5 /C %s
+
+{G:\Programming\Programs\C\CGT\MultiPoker\Jacks}.C.obj:
+    @echo " Compile::C++ Compiler "
+    icc.exe /I.. /O /Ge- /G5 /C %s
+
+.RC.res:
+    @echo " Compile::Resource Compiler "
+    rc.exe -r %s %|fF.RES
+
+{G:\Programming\Programs\C\CGT\MultiPoker\Jacks}.RC.res:
+    @echo " Compile::Resource Compiler "
+    rc.exe -r %s %|fF.RES
+
+all: \
+    .\Jacks.DLL
+
+.\Jacks.DLL: \
+    .\Jacks.obj \
+    .\Jacks.res \
+    {$(LIB)}Jacks.DEF
+    @echo " Link::Linker "
+    @echo " Bind::Resource Bind "
+    icc.exe @<<
+     /FeJacks.DLL 
+     Jacks.DEF
+     .\Jacks.obj
+<<
+    rc.exe .\Jacks.res Jacks.DLL
+
+.\Jacks.obj: \
+    G:\Programming\Programs\C\CGT\MultiPoker\Jacks\Jacks.C \
+    {G:\Programming\Programs\C\CGT\MultiPoker\Jacks;..;$(INCLUDE);}MPokerDLL.H \
+    {G:\Programming\Programs\C\CGT\MultiPoker\Jacks;..;$(INCLUDE);}Jacks.H
+
+.\Jacks.res: \
+    G:\Programming\Programs\C\CGT\MultiPoker\Jacks\Jacks.RC \
+    {G:\Programming\Programs\C\CGT\MultiPoker\Jacks;$(INCLUDE)}Jacks.H \
+    ..\MPokerDLL.H

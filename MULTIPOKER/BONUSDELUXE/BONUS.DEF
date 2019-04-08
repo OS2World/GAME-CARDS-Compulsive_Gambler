@@ -1,0 +1,5 @@
+LIBRARY Bonus
+EXPORTS HandValue
+        CalcOdds
+
+

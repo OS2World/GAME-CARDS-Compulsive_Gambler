@@ -1,0 +1,79 @@
+# makefile
+# Created by IBM WorkFrame/2 MakeMake at 20:06:19 on 25 Mar 1999
+#
+# The actions included in this make file are:
+#  Compile::C++ Compiler
+#  Link::Linker
+#  Bind::Resource Bind
+#  Compile::Resource Compiler
+
+.SUFFIXES:
+
+.SUFFIXES: \
+    .C .RC .obj .res 
+
+.C.obj:
+    @echo " Compile::C++ Compiler "
+    icc.exe /Ti /Gm /G5 /C %s
+
+{G:\Programming\Programs\C\CGT\BlackJack}.C.obj:
+    @echo " Compile::C++ Compiler "
+    icc.exe /Ti /Gm /G5 /C %s
+
+.RC.res:
+    @echo " Compile::Resource Compiler "
+    rc.exe -r %s %|fF.RES
+
+{G:\Programming\Programs\C\CGT\BlackJack}.RC.res:
+    @echo " Compile::Resource Compiler "
+    rc.exe -r %s %|fF.RES
+
+all: \
+    .\BJack.exe
+
+.\BJack.exe: \
+    .\Dialogs.obj \
+    .\MainWindow.obj \
+    .\BlackJack.obj \
+    .\Deal.obj \
+    .\BlackJack.res \
+    {$(LIB)}MMPM2.LIB
+    @echo " Link::Linker "
+    @echo " Bind::Resource Bind "
+    icc.exe @<<
+     /B" /de /pmtype:pm"
+     /FeBJack.exe 
+     MMPM2.LIB 
+     .\Dialogs.obj
+     .\MainWindow.obj
+     .\BlackJack.obj
+     .\Deal.obj
+<<
+    rc.exe .\BlackJack.res BJack.exe
+
+.\Dialogs.obj: \
+    G:\Programming\Programs\C\CGT\BlackJack\Dialogs.C \
+    {G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE);}BlackJack.H \
+    {G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE);}BlackJackRC.H
+
+.\Deal.obj: \
+    G:\Programming\Programs\C\CGT\BlackJack\Deal.C \
+    {G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE);}BlackJack.H \
+    {G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE);}BlackJackRC.H
+
+.\BlackJack.obj: \
+    G:\Programming\Programs\C\CGT\BlackJack\BlackJack.C \
+    {G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE);}BlackJack.H \
+    {G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE);}BlackJackRC.H
+
+.\MainWindow.obj: \
+    G:\Programming\Programs\C\CGT\BlackJack\MainWindow.C \
+    {G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE);}BlackJack.H \
+    {G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE);}BlackJackRC.H
+
+.\BlackJack.res: \
+    G:\Programming\Programs\C\CGT\BlackJack\BlackJack.RC \
+    {G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE)}BlackJack.dlg \
+    {G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE)}BlackJackRC.H \
+    {G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE)}BlackJack.ICO \
+    {G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE)}BlackJack.H

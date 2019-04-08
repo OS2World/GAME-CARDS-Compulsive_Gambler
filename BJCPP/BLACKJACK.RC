@@ -1,0 +1,47 @@
+//
+// File: Blackjack.rc
+//
+// OS/2 Resource script for the Compulsive Gambler's Toolkit
+//
+#include "Blackjack.h"
+
+ICON  MainWindow  "Blackjack.ico"
+
+MENU MainWindow
+BEGIN
+   SUBMENU  "~Game", MainGame
+   BEGIN
+      MENUITEM "Add $100", MainGameAdd100
+      MENUITEM "Cash Out", MainGameCashOut
+      MENUITEM SEPARATOR
+      MENUITEM "E~xit", MainGameExit
+   END
+   SUBMENU  "~Action", MainAction
+   BEGIN
+      MENUITEM "~Deal", MainActionDeal
+      MENUITEM "~Hit", MainActionHit, MIS_TEXT, MIA_DISABLED
+      MENUITEM "S~tand", MainActionStand, MIS_TEXT, MIA_DISABLED
+      MENUITEM "S~plit", MainActionSplit, MIS_TEXT, MIA_DISABLED
+      MENUITEM "Do~uble", MainActionDouble, MIS_TEXT, MIA_DISABLED
+   END
+   SUBMENU  "~Options", MainOptions
+   BEGIN
+      MENUITEM "Rules...", MainOptionsRules
+      MENUITEM "Sounds...", MainOptionsSounds
+   END
+END
+
+STRINGTABLE
+BEGIN
+   AppName  "Blackjack"
+   Version  "v1.00"
+   MainWindow  "Blackjack v1.00"
+   PMT_DEAL    "Deal"
+   PMT_HIT     "Hit"
+   PMT_STAND   "Stand"
+   PMT_SPLIT   "Split"
+   PMT_DOUBLE  "Double"
+   PMT_BLACKJACK  "Blackjack"
+   PMT_ERROR   "Blackjack Error"
+   PMT_NOLIBRARY  "Cannot load default deck"
+END

@@ -1,0 +1,35 @@
+# makefile
+# Created by IBM WorkFrame/2 MakeMake at 20:19:17 on 8 Feb 1999
+#
+# The actions included in this make file are:
+#  Compile::C++ Compiler
+#  Link::Linker
+
+.SUFFIXES:
+
+.SUFFIXES: \
+    .C .obj 
+
+.C.obj:
+    @echo " Compile::C++ Compiler "
+    icc.exe /O /G5 /C %s
+
+{G:\Programming\Programs\C\CGT\MultiPoker\Odds}.C.obj:
+    @echo " Compile::C++ Compiler "
+    icc.exe /O /G5 /C %s
+
+all: \
+    .\Odds.exe
+
+.\Odds.exe: \
+    .\Odds.obj
+    @echo " Link::Linker "
+    icc.exe @<<
+     /FeOdds.exe 
+     .\Odds.obj
+<<
+
+.\Odds.obj: \
+    G:\Programming\Programs\C\CGT\MultiPoker\Odds\Odds.C \
+    {G:\Programming\Programs\C\CGT\MultiPoker\Odds;$(INCLUDE);}Odds.H \
+    {G:\Programming\Programs\C\CGT\MultiPoker\Odds;$(INCLUDE);}MPokerDLL.H

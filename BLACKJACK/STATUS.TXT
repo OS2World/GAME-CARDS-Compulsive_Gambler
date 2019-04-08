@@ -1,0 +1,79 @@
+Issues with Blackjack, March 29th, 1999
+
+1. Split does not force a resize to show the cards
+
+    3/29/99 - Corrected
+
+2. Sounds have not been implemented
+
+    3/29/99 - Sounds have been added.  Might add individually selectable
+    sounds, including announcement of hand values.
+
+3. The bet circle does not use chips yet
+
+4. The bet circle does not refresh correctly when the active hand
+   changes
+
+5. Help has not yet been implemented
+
+6. Split hands do not pay out correctly.
+
+    3/29/99 - Corrected
+
+7. The positioning of cards becomes corrupted during additional
+   dealing.
+
+   3/25/99 - This has been found to be a bug/feature of GpiWCBitBlt, 
+             whereby the target coordinates are altered by the function
+             call under some drivers.  Fixed by copying the target
+             location to temporary storage for the call.
+
+8. The "advice" button has not been implemented.
+
+9. The background is simply green instead of a table bitmap.
+
+10. Insurance is offered unconditionally when an ace is shown.
+
+11. Doubling does not change the value in the bet circle.
+
+    3/29/99 - Corrected.
+
+12. The dealer's cards are space too far apart and could overwrite
+    the shoe if more than about 6 cards are dealt.
+
+13. The shoe does not show the marker.
+
+14. The "settings" dialog does not center itself
+
+15. The "settings" dialog treats "Hit soft 17" and "Double 10/11 only"
+    as the same setting.
+
+    3/29/99 - Corrected.
+
+16. The window sizing is not saved/restored.
+
+    3/29/99 - Corrected
+
+17. The bank/wager is not saved/restored.
+
+    3/29/99 - Corrected.
+
+18. Portions of the main menu should be disabled during play.
+
+19. The Sound On/Off menu does not function.
+
+    3/29/99 - Corrected, although it might be replaced by a sounds dialog.
+
+20. Payout animation should be improved.
+
+21. There is no restriction on playing after splitting aces.
+
+    3/29/99 - Corrected
+
+22. After playing a split hand, the window does not resize
+    for single hand play.
+
+    3/29/99 - Corrected.
+
+23. An option to allow players to continue playing on split aces should
+    be implemented.

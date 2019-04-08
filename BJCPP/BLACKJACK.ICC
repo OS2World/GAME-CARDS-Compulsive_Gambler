@@ -1,0 +1,20 @@
+option ProjectOptions = gen(rtti, "all"), macros(global, "yes")
+{
+   option  link(linkwithmultithreadlib), link(linkwithsharedlib),
+          incl(searchpath, "."), lang(nokeyword, "bool"), lang(nokeyword, "true"),
+          lang(nokeyword, "false"), define("IC_LANG_BOOL", 0), define("_X86_"),
+          define("IVB_IMPORT", "_Import"), link(pmtype, pm), link(debug)
+   {
+      target "BJack.exe"
+      {
+         source type(cpp) "Profile.CPP"
+         source type(cpp) "Blackjack.cpp"
+         source type(hpp) "Blackjack.h"
+         source type(hpp) "Blackjack.hpp"
+         source type(rc) "Blackjack.rc"
+         source type(cpp) "Command.cpp"
+         source type(cpp) "Hand.CPP"
+         source type(cpp) "Deck.CPP"
+      }
+   }
+}

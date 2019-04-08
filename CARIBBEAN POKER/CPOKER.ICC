@@ -1,0 +1,19 @@
+option ProjectOptions = gen(arch, "pentium"), gen(rtti, "all"), opt(tune, "pentium"), 
+                        incl(searchpath, "..\\"), macros(global, "yes")
+{
+option lang(nokeyword, "bool"), lang(nokeyword, "true"), lang(nokeyword, "false"), 
+       link(linkwithmultithreadlib, "yes"), link(padding, "no"), link(pmtype, "pm"), 
+       define("IC_LANG_BOOL", "0"), define("_X86_", ), define("IVB_IMPORT", "_Import"), 
+       incl(searchpath, ".")
+{
+   target type(exe) "CPoker.exe"
+   {
+      source type(cpp) "Hand.CPP"
+      source type(cpp) "Command.CPP"
+      source type(cpp) "Profile.CPP"
+      source type(cpp) "CPoker.CPP"
+      source type(hpp) "CPoker.HPP"
+      source type(rc)  "CPoker.RC"
+   }
+}
+}

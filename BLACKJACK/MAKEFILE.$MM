@@ -1,0 +1,71 @@
+:TARGET.SUFFIXES
+:TARGET.SUFFIXES
+:DEPENDENCY..C .RC .obj .res 
+:TARGET.all
+:DEPENDENCY.
+.\BJack.exe
+:RULE..C.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /Ti /Gm /G5 /C %s
+:RULE.{G:\Programming\Programs\C\CGT\BlackJack}.C.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /Ti /Gm /G5 /C %s
+:RULE..RC.res
+:ACTION.Compile::Resource Compiler
+:COMMAND.
+rc.exe -r %s %|fF.RES
+:RULE.{G:\Programming\Programs\C\CGT\BlackJack}.RC.res
+:ACTION.Compile::Resource Compiler
+:COMMAND.
+rc.exe -r %s %|fF.RES
+:TARGET..\BJack.exe
+:DEPENDENCY.
+.\Dialogs.obj
+.\MainWindow.obj
+.\BlackJack.obj
+.\Deal.obj
+.\BlackJack.res
+{$(LIB)}MMPM2.LIB
+:ACTION.Link::Linker
+:COMMAND.
+icc.exe @<<
+ /B" /de /pmtype:pm"
+ /FeBJack.exe 
+ MMPM2.LIB 
+ .\Dialogs.obj
+ .\MainWindow.obj
+ .\BlackJack.obj
+ .\Deal.obj
+<<
+:ACTION.Bind::Resource Bind
+:COMMAND.
+rc.exe .\BlackJack.res BJack.exe
+:TARGET..\Dialogs.obj
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\BlackJack\Dialogs.C
+{G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE);}BlackJack.H
+{G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE);}BlackJackRC.H
+:TARGET..\Deal.obj
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\BlackJack\Deal.C
+{G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE);}BlackJack.H
+{G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE);}BlackJackRC.H
+:TARGET..\BlackJack.obj
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\BlackJack\BlackJack.C
+{G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE);}BlackJack.H
+{G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE);}BlackJackRC.H
+:TARGET..\MainWindow.obj
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\BlackJack\MainWindow.C
+{G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE);}BlackJack.H
+{G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE);}BlackJackRC.H
+:TARGET..\BlackJack.res
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\BlackJack\BlackJack.RC
+{G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE)}BlackJack.dlg
+{G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE)}BlackJackRC.H
+{G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE)}BlackJack.ICO
+{G:\Programming\Programs\C\CGT\BlackJack;$(INCLUDE)}BlackJack.H

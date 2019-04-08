@@ -1,0 +1,15 @@
+
+/* Windows NT Resource Script File - Created by Integrated Resource Editor */
+
+#include <winuser.h>
+#include <commctrl.h>
+
+1  BITMAP      "CardNT0W.BMP"
+2  BITMAP      "CardNT1W.BMP"
+3  BITMAP      "CardNT2W.BMP"
+4  BITMAP      "CardNT3W.BMP"
+
+STRINGTABLE MOVEABLE DISCARDABLE
+BEGIN
+    1024,                               "52"
+END

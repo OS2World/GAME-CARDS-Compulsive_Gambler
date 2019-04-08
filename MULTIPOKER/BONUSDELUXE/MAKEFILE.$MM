@@ -1,0 +1,47 @@
+:TARGET.SUFFIXES
+:TARGET.SUFFIXES
+:DEPENDENCY..C .RC .obj .res 
+:TARGET.all
+:DEPENDENCY.
+.\Bonus.DLL
+:RULE..C.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /O /Ge- /G5 /C %s
+:RULE.{G:\Programming\Programs\C\CGT\MultiPoker\BonusDeluxe}.C.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /O /Ge- /G5 /C %s
+:RULE..RC.res
+:ACTION.Compile::Resource Compiler
+:COMMAND.
+rc.exe -r %s %|fF.RES
+:RULE.{G:\Programming\Programs\C\CGT\MultiPoker\BonusDeluxe}.RC.res
+:ACTION.Compile::Resource Compiler
+:COMMAND.
+rc.exe -r %s %|fF.RES
+:TARGET..\Bonus.DLL
+:DEPENDENCY.
+.\Bonus.obj
+.\Bonus.res
+{$(LIB)}Bonus.DEF
+:ACTION.Link::Linker
+:COMMAND.
+icc.exe @<<
+ /FeBonus.DLL 
+ Bonus.DEF
+ .\Bonus.obj
+<<
+:ACTION.Bind::Resource Bind
+:COMMAND.
+rc.exe .\Bonus.res Bonus.DLL
+:TARGET..\Bonus.obj
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\MultiPoker\BonusDeluxe\Bonus.C
+..\MPokerDLL.H
+{G:\Programming\Programs\C\CGT\MultiPoker\BonusDeluxe;$(INCLUDE);}Bonus.H
+:TARGET..\Bonus.res
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\MultiPoker\BonusDeluxe\Bonus.RC
+{G:\Programming\Programs\C\CGT\MultiPoker\BonusDeluxe;$(INCLUDE)}Bonus.H
+..\MPokerDLL.H

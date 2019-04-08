@@ -1,0 +1,29 @@
+Features to add to Compulsive Gambler's Toolkit
+
+1. Blackjack game
+
+2. Multi Poker
+
+    - Sounds
+    - More games (Double Bonus, etc.)
+    - Odds computation
+    - Animated Dealing
+    - Visible Bet
+    - Autoscaling Fonts
+    - Game specific help
+    - Game specific icon(?)
+    - Statistics
+    - Animated payout table
+    - Card back selection
+    - New cash flow algorithm
+    - Animated Payout
+
+3. Caribbean Stud
+
+    - Sounds
+    - Possibly Caribbean Draw
+    - Autoscaling Fonts
+    - Improved Advice algorithm
+    - Animated Payout
+    - Card back selection
+

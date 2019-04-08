@@ -1,0 +1,14 @@
+
+/* OS/2 Warp Resource Script File - Created by Integrated Resource Editor */
+
+#include <os2.h>
+
+BITMAP      1 "Card0W.BMP"
+BITMAP      2 "Card1W.BMP"
+BITMAP      3 "Card2W.BMP"
+BITMAP      4 "Card3W.BMP"
+
+STRINGTABLE MOVEABLE DISCARDABLE
+BEGIN
+    1024,                               "52"
+END

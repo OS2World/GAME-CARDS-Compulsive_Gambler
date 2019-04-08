@@ -1,0 +1,69 @@
+MultiPoker v1.1 Instructions - August 14th, 1998
+
+About the Game
+
+MultiPoker is a generic five card poker playing program.  It simulates many
+of the video poker machines found in casinos.  Much unlike the casinos,
+MultiPoker also offers advice on optimal playing strategy.
+
+The current version of MultiPoker comes with three of the most popular
+video poker games around: Jacks or Better, Bonus Deluxe, and Deuces Wild.
+
+Installation
+
+Copy the executable, MPoker.EXE, to a directory.  Copy all game DLL files to
+that same directory.  Make sure that the current path is in your library path
+list.  To do this, open CONFIG.SYS from your boot drive.  Look for the
+LIBPATH line.  One of the semicolon separated items should be ".".  An example
+would be:
+
+    LIBPATH=C:\OS2\DLL;C:\OS2;C:\;
+
+This line would require the current path to be added as follows:
+
+    LIBPATH=.;C:\OS2\DLL;C:\OS2;C:\;
+
+Note the ".;" added after the "=" sign.
+
+To Play
+
+From an OS/2 command prompt, enter the MultiPoker directory and type:
+
+    MPoker
+
+A window should appear.  Since a game has not been selected, use the Game->
+Select menu to select one of the available games.  When a game is selected, its
+name will appear in the titlebar, and the payout table will appear above the
+cards.
+
+Playing a hand requires that you wager anywhere between $1 and $5.  Increase
+your wager by pressing the "Bet" button (or "+" key).  To bet the maximum of
+$5, simply press the "Bet Five" button (spacebar).  Betting $5 automatically
+deals the cards, since no more money can be wagered on a single hand.
+
+When the cards are dealt, the initial value of the hand (if any) is shown above
+the cards.  Use the Keep/Discard buttons (F5-F9) to select cards to be kept.
+The Advice button automatically sets the discard combination which yields the
+maximum probable payout given your initial hand.
+
+The Odds button displays the probable outcomes of each hand type given the
+presently selected discard combination.
+
+If you run out of money (all too likely in real life), select Game->New to set
+the bank back to $25.
+
+
+Tips
+
+If you were to attempt to bring this game into a real casino, you'd probably
+end up in cement overshoes.  The purpose of the "Advice" and "Odds" functions
+is to give you increased skill so that when you enter a real casino, you'll
+play as close to the optimal strategy as possible.
+
+With this in mind, a good practice is to pick the "keep" cards yourself at
+first, then use the "Advice" button to see if your choice matches the
+computer's.  The "Odds" button can be used to see how far from the optimal
+your selection of keep cards was.  In some cases, there are several "optimal"
+selections; the computer only shows one.  In other cases, the difference
+between the optimal strategy and your selections might amount to fractions
+of a penny.

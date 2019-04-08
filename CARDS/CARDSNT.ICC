@@ -1,0 +1,8 @@
+target "StandNT.DLL"
+{
+   source "STANDNT.RC"
+}
+target "DWDeckNT.DLL"
+{
+   source "DWDECKNT.RC"
+}

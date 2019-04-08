@@ -1,0 +1,47 @@
+:TARGET.SUFFIXES
+:TARGET.SUFFIXES
+:DEPENDENCY..C .RC .obj .res 
+:TARGET.all
+:DEPENDENCY.
+.\Deuces.DLL
+:RULE..C.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /I..\ /O /Ge- /G5 /C %s
+:RULE.{G:\Programming\Programs\C\CGT\MultiPoker\Deuces}.C.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /I..\ /O /Ge- /G5 /C %s
+:RULE..RC.res
+:ACTION.Compile::Resource Compiler
+:COMMAND.
+rc.exe -r %s %|fF.RES
+:RULE.{G:\Programming\Programs\C\CGT\MultiPoker\Deuces}.RC.res
+:ACTION.Compile::Resource Compiler
+:COMMAND.
+rc.exe -r %s %|fF.RES
+:TARGET..\Deuces.DLL
+:DEPENDENCY.
+.\Deuces.obj
+.\Deuces.res
+{$(LIB)}Deuces.DEF
+:ACTION.Link::Linker
+:COMMAND.
+icc.exe @<<
+ /FeDeuces.DLL 
+ Deuces.DEF
+ .\Deuces.obj
+<<
+:ACTION.Bind::Resource Bind
+:COMMAND.
+rc.exe .\Deuces.res Deuces.DLL
+:TARGET..\Deuces.obj
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\MultiPoker\Deuces\Deuces.C
+{G:\Programming\Programs\C\CGT\MultiPoker\Deuces;..\;$(INCLUDE);}MPokerDLL.H
+{G:\Programming\Programs\C\CGT\MultiPoker\Deuces;..\;$(INCLUDE);}Deuces.H
+:TARGET..\Deuces.res
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\MultiPoker\Deuces\Deuces.RC
+{G:\Programming\Programs\C\CGT\MultiPoker\Deuces;$(INCLUDE)}Deuces.H
+..\MPokerDLL.H

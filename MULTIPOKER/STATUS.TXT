@@ -1,0 +1,131 @@
+Issues remaining with MultiPoker Base - March 25th, 1999
+
+1. Name of game does not appear.  Should put in titlebar
+
+    Corrected 7/30/98
+
+2. Value of initial hand should be indicated on payout table, and in smaller
+   text above cards.
+
+    1/26/99 - Initial value is displayed above cards, but in full size text.
+
+3. It should not be possible to select a different card game after the first
+   set of cards has been dealt, but before the final set.
+
+   Corrected 7/30/98
+
+4. A provision for nagware restrictions must be made.
+
+   2/7/99 - It has been decided that the OS/2 version will be freeware.
+
+5. Appearance of dealt cards should be animated.  Perhaps speed adjustable.
+
+6. The opening window should not show "nothing" as a hand value.
+
+    Corrected 7/30/98.
+
+7. Upon opening, the game should be ready to play, without needing to get
+   money, or select a game.  Perhaps money and game selections should be saved.
+
+    7/30/98 - The "new" function is executed automatically upon invocation.
+    2/7/99 - Users have requested an automatic game selection.
+
+8. The current bet should be shown during play.
+
+    2/7/99 - This will probably be done in the payout field.
+
+9. The advice system needs to be implemented, and disabled if the selected
+   game does not offer advice.
+
+    8/4/98 - Implemented.
+
+10. Hotkeys should be assigned to all major functions, including discarding.
+
+    7/30/98 - F5-F9 are used for discard, + for bet, spacebar for bet 5.
+    8/14/98 - "A" for advice, "O" for odds, and "D" for deal have been added.
+
+11. Sounds should be added, as an option.
+
+12. The standard deck should be redrawn.
+
+    8/14/98 - Done.
+
+13. Deuces Wild requires a special deck where the deuces indicate "wild".
+
+    8/14/98 - Done.
+
+14. There should be a provision for the same game using different payouts.
+
+    1/26/99 - Will implement as DLLs, not as options.
+
+15. Each game type should preserve its last hand, so that when it is switched
+    to, the displayed cards are redrawn.
+
+    1/26/99 - Instead, new games will display card backs.
+
+16. Fonts used within the game should be scaled to window size.
+
+    2/7/99 - User feedback has complained about font sizes, especially
+    in the payout table.
+
+17. The game DLLs need to implement their respective odds calculations.
+
+    8/4/98 - Implemented.  Odds calculation accuracy under test.
+
+18. Version number information should be automated and available.
+
+    7/30/98 - Version shows on titlebar, but does not update automatically.
+
+19. Window parameters need to be saved to Gambler.INI file.
+
+    1/26/99 - Done.  Window size and maximize/minimize flags saved.
+
+20. Some form of help should be implemented.
+
+    2/7/99 - Done.  Game specific help has not been implemented yet.
+
+21. A game specific icon should be created.
+
+    1/26/99 - Done.
+
+22. An install program should be created.
+
+    2/7/99 - The Compulsive Gambler's Toolkit has an installation program.
+
+23. Some form of statistics recording should be done.
+
+24. The card backs should be implemented.
+
+    1/26/99 - Done.
+
+25. It is possible, however unlikely, that a blank card appears.
+
+    1/26/99 - This is believed to be caused by the random number
+    generator, which can (although rarely), generate 1, which
+    creates a card number equal to 53 in a 52 card deck.  When 1 is
+    generated, the randomizer is called again.
+
+26. The "About..." dialog should be implemented.
+
+    1/26/99 - Done.
+
+27. The DLL loading and selection should be restricted to the game
+    directory.
+
+28. The payout table should be converted to standard text.  This makes
+    it more readable at a given font size, and allows colored marking
+    for bet and payout information.
+
+29. More game DLLs should be written
+
+30. Might consider having any deck except Standard.DLL only provide cards
+    which differ from Standard.DLL.  This would reduce the size of similar
+    decks (such as DWDeck.DLL) considerably.
+
+31. Should consider increasing the resolution of the decks.
+
+32. Decks with multiple backs should allow user selection.
+
+33. The money should be handled as in Caribbean Stud, whereby the money
+    can be cashed out, added, and recorded. (ie. replace "New" with
+    "Add $25").

@@ -1,0 +1,93 @@
+February 7th, 1999
+
+1. Window resizing does not work.
+
+    12/5/98 - Window sizing fully supported, except for auto font scaling.
+        Sizes stored in Gambler.INI file.
+
+2. The program is not listed in the Window List
+
+    12/5/98 - Corrected
+
+3. The program allows the player to ante on a hand which
+   cannot be covered.
+
+    12/5/98 - Corrected
+
+4. The "Advice" button uses a simplistic algorithm.
+
+5. There are no sound effects.
+
+6. Payout is not animated.
+
+7. The jackpot does not grow.
+
+    12/5/98 - Jackpot grows about 2 cents per second.  Last jackpot
+        saved in Gambler.INI file.  Jackpot now has upper and lower limits.
+
+    12/6/98 - The jackpot may not be growing quickly enough.
+
+    12/11/98 - Jackpot now grows 10 cents per "tick".
+
+8. The progressive payout is as yet untested.
+
+    12/5/98 - Progressive payout seems to work.
+
+9. The accelerators do not function.
+
+    12/5/98 - Accelerators implemented.
+
+10. An exit button should be added.
+
+    12/5/98 - Done
+
+11. The code should be internationalized.
+
+12. A new game specific icon should be created.
+
+    12/11/98 - Done
+
+13. Parameters should be loaded/saved via INI file.
+
+    12/5/98 - Code is in place.  New values need only be added when needed.
+
+14. The deck library, Standard.DLL, does not load on certain computers.
+
+    12/6/98 - A diagnostic window has been added, but probably won't tell
+         much.  It might be the raw size of the DLL, or the mix of 16 and 256
+        color bitmaps.
+
+    2/2/99 - This was found to be a compilation which depended upon the
+        VisualAge C++ libraries.  It has been corrected.
+
+15. The statistics cannot be viewed.
+
+    12/11/98 - Fixed.
+
+16. A "cash out" button should be added, and recorded statistically.
+
+    12/11/98 - Done.
+
+17. On a 640x480 system, the subwindows are too small.  Button text is
+    unreadable.
+
+    12/11/98 - Buttons have been enlarged, need to test
+
+18. Help has not been implemented.
+
+    2/2/99 - Done, but needs improvement.
+
+19. On Todd's system, closing the statistics screen crashes the program
+    at $108C7 (which is line 218 in the Resize routine).  The assembler
+    instruction is FSTP QWORD PTR[ESP].  It has not been observed on
+    any other machines, nor from field tests.
+
+20. Card back selection should be implemented.
+
+21. The DLL loading should consider specifying the exact source directory.
+    This will prevent future problems with systems which have multiple
+    common DLL names.
+
+22. The game is unaware of failures to load Standard.DLL.
+
+23. The fonts should be scaled.

@@ -1,0 +1,55 @@
+# makefile
+# Created by IBM WorkFrame/2 MakeMake at 19:50:15 on 8 Feb 1999
+#
+# The actions included in this make file are:
+#  Compile::C++ Compiler
+#  Link::Linker
+#  Bind::Resource Bind
+#  Compile::Resource Compiler
+
+.SUFFIXES:
+
+.SUFFIXES: \
+    .C .RC .obj .res 
+
+.C.obj:
+    @echo " Compile::C++ Compiler "
+    icc.exe /I..\ /O /Ge- /G5 /C %s
+
+{G:\Programming\Programs\C\CGT\MultiPoker\Deuces}.C.obj:
+    @echo " Compile::C++ Compiler "
+    icc.exe /I..\ /O /Ge- /G5 /C %s
+
+.RC.res:
+    @echo " Compile::Resource Compiler "
+    rc.exe -r %s %|fF.RES
+
+{G:\Programming\Programs\C\CGT\MultiPoker\Deuces}.RC.res:
+    @echo " Compile::Resource Compiler "
+    rc.exe -r %s %|fF.RES
+
+all: \
+    .\Deuces.DLL
+
+.\Deuces.DLL: \
+    .\Deuces.obj \
+    .\Deuces.res \
+    {$(LIB)}Deuces.DEF
+    @echo " Link::Linker "
+    @echo " Bind::Resource Bind "
+    icc.exe @<<
+     /FeDeuces.DLL 
+     Deuces.DEF
+     .\Deuces.obj
+<<
+    rc.exe .\Deuces.res Deuces.DLL
+
+.\Deuces.obj: \
+    G:\Programming\Programs\C\CGT\MultiPoker\Deuces\Deuces.C \
+    {G:\Programming\Programs\C\CGT\MultiPoker\Deuces;..\;$(INCLUDE);}MPokerDLL.H \
+    {G:\Programming\Programs\C\CGT\MultiPoker\Deuces;..\;$(INCLUDE);}Deuces.H
+
+.\Deuces.res: \
+    G:\Programming\Programs\C\CGT\MultiPoker\Deuces\Deuces.RC \
+    {G:\Programming\Programs\C\CGT\MultiPoker\Deuces;$(INCLUDE)}Deuces.H \
+    ..\MPokerDLL.H

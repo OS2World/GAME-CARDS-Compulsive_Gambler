@@ -1,0 +1,66 @@
+:TARGET.SUFFIXES
+:TARGET.SUFFIXES
+:DEPENDENCY..C .RC .obj .res 
+:TARGET.all
+:DEPENDENCY.
+.\MPoker.exe
+:RULE..C.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /Ti /G5 /C %s
+:RULE.{G:\Programming\Programs\C\CGT\MultiPoker}.C.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /Ti /G5 /C %s
+:RULE..RC.res
+:ACTION.Compile::Resource Compiler
+:COMMAND.
+rc.exe -r %s %|fF.RES
+:RULE.{G:\Programming\Programs\C\CGT\MultiPoker}.RC.res
+:ACTION.Compile::Resource Compiler
+:COMMAND.
+rc.exe -r %s %|fF.RES
+:TARGET..\MPoker.exe
+:DEPENDENCY.
+.\MainWindow.obj
+.\MPoker.obj
+.\Dialogs.obj
+.\MPoker.res
+{$(LIB)}MMPM2.LIB
+:ACTION.Link::Linker
+:COMMAND.
+icc.exe @<<
+ /B" /de /pmtype:pm"
+ /FeMPoker.exe 
+ MMPM2.LIB 
+ .\MainWindow.obj
+ .\MPoker.obj
+ .\Dialogs.obj
+<<
+:ACTION.Bind::Resource Bind
+:COMMAND.
+rc.exe .\MPoker.res MPoker.exe
+:TARGET..\MainWindow.obj
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\MultiPoker\MainWindow.C
+{G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE);}MPoker.H
+{G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE);}MPokerRC.H
+{G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE);}MPokerDLL.H
+:TARGET..\Dialogs.obj
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\MultiPoker\Dialogs.C
+{G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE);}MPoker.H
+{G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE);}MPokerRC.H
+{G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE);}MPokerDLL.H
+:TARGET..\MPoker.obj
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\MultiPoker\MPoker.C
+{G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE);}MPoker.H
+{G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE);}MPokerRC.H
+{G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE);}MPokerDLL.H
+:TARGET..\MPoker.res
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\MultiPoker\MPoker.RC
+{G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE)}MPoker.dlg
+{G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE)}MPokerRC.H
+{G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE)}MPoker.ICO

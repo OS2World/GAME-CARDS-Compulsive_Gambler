@@ -1,0 +1,74 @@
+# makefile
+# Created by IBM WorkFrame/2 MakeMake at 14:32:18 on 27 April 1999
+#
+# The actions included in this make file are:
+#  Compile::C++ Compiler
+#  Link::Linker
+#  Bind::Resource Bind
+#  Compile::Resource Compiler
+
+.SUFFIXES:
+
+.SUFFIXES: \
+    .C .RC .obj .res 
+
+.C.obj:
+    @echo " Compile::C++ Compiler "
+    icc.exe /Ti /G5 /C %s
+
+{G:\Programming\Programs\C\CGT\MultiPoker}.C.obj:
+    @echo " Compile::C++ Compiler "
+    icc.exe /Ti /G5 /C %s
+
+.RC.res:
+    @echo " Compile::Resource Compiler "
+    rc.exe -r %s %|fF.RES
+
+{G:\Programming\Programs\C\CGT\MultiPoker}.RC.res:
+    @echo " Compile::Resource Compiler "
+    rc.exe -r %s %|fF.RES
+
+all: \
+    .\MPoker.exe
+
+.\MPoker.exe: \
+    .\MainWindow.obj \
+    .\MPoker.obj \
+    .\Dialogs.obj \
+    .\MPoker.res \
+    {$(LIB)}MMPM2.LIB
+    @echo " Link::Linker "
+    @echo " Bind::Resource Bind "
+    icc.exe @<<
+     /B" /de /pmtype:pm"
+     /FeMPoker.exe 
+     MMPM2.LIB 
+     .\MainWindow.obj
+     .\MPoker.obj
+     .\Dialogs.obj
+<<
+    rc.exe .\MPoker.res MPoker.exe
+
+.\MainWindow.obj: \
+    G:\Programming\Programs\C\CGT\MultiPoker\MainWindow.C \
+    {G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE);}MPoker.H \
+    {G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE);}MPokerRC.H \
+    {G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE);}MPokerDLL.H
+
+.\Dialogs.obj: \
+    G:\Programming\Programs\C\CGT\MultiPoker\Dialogs.C \
+    {G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE);}MPoker.H \
+    {G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE);}MPokerRC.H \
+    {G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE);}MPokerDLL.H
+
+.\MPoker.obj: \
+    G:\Programming\Programs\C\CGT\MultiPoker\MPoker.C \
+    {G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE);}MPoker.H \
+    {G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE);}MPokerRC.H \
+    {G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE);}MPokerDLL.H
+
+.\MPoker.res: \
+    G:\Programming\Programs\C\CGT\MultiPoker\MPoker.RC \
+    {G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE)}MPoker.dlg \
+    {G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE)}MPokerRC.H \
+    {G:\Programming\Programs\C\CGT\MultiPoker;$(INCLUDE)}MPoker.ICO

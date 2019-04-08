@@ -1,0 +1,145 @@
+
+/* Windows NT Resource Script File - Created by Integrated Resource Editor */
+
+#include <winuser.h>
+#include <commctrl.h>
+
+#include "CPoker.H"
+
+BMP_PROGEMPTY         BITMAP "PEmptyNT.bmp"
+BMP_PROGFULL          BITMAP "PFullNT.bmp"
+BMP_ANTE              BITMAP "AnteNT.bmp"
+BMP_BET               BITMAP "BetNT.bmp"
+BMP_EMPTY             BITMAP "EmptyNT.bmp"
+
+MainWindow                              ICON "CPokerNT.ico"
+
+
+MainWindow MENUEX
+BEGIN
+
+    POPUP "&Game", IDM_GAME, MFT_STRING
+    BEGIN
+        MENUITEM "Stud",               IDM_STUD, MFT_STRING, MFS_CHECKED
+        MENUITEM "Draw",               IDM_DRAW, MFT_STRING
+        MENUITEM "",                   -1, MFT_SEPARATOR
+        MENUITEM "E&xit",              IDM_EXIT, MFT_STRING
+    END
+
+    POPUP "&Cash", 1200, MFT_STRING
+    BEGIN
+        MENUITEM "Add $100",           IDM_ADD, MFT_STRING
+        MENUITEM "Cash Out",           IDM_CASH, MFT_STRING
+    END
+
+    POPUP "&Help", IDM_HELP, MFT_STRING
+    BEGIN
+        MENUITEM "Help &index",        IDM_HELPINDEX, MFT_STRING
+        MENUITEM "",                   -1, MFT_SEPARATOR
+        MENUITEM "About...",           IDM_ABOUT, MFT_STRING
+    END
+END
+
+
+MainWindow MENUEX
+BEGIN
+    POPUP "", 0
+    BEGIN
+    END
+END
+
+MainWindow DIALOG 0, 436, -4, -10
+CAPTION ""
+STYLE WS_POPUP | WS_SIZEBOX | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+BEGIN
+END
+
+MainWindow DIALOG 4, 136, 460, 260
+CAPTION "Caribbean Poker v1.00"
+STYLE WS_POPUP | WS_SIZEBOX | WS_VISIBLE | WS_CAPTION | WS_SYSMENU |
+      WS_MINIMIZEBOX | WS_MAXIMIZEBOX
+BEGIN
+END
+
+STRINGTABLE
+BEGIN
+    PMT_ANTE,                              "&Ante"
+    PMT_BET,                              "&Bet"
+    PMT_FOLD,                              "&Fold"
+    PMT_ADVICE,                              "A&dvice"
+    CPOKER_PMT_APPNAME,                               "Caribbean Poker"
+    CPOKER_PMT_VERSION,                               "v1.00"
+    PMT_AUTO,                              "Auto"
+    PMT_BANK,                              "Bank: $"
+    PMT_PAYOUT,                         "Player paid $"
+    PMT_PROGPAYOUT,                     "Progressive pays $"
+    512,                                "Nothing"
+    528,                                "Ace/King"
+    544,                                "Pair of Deuces"
+    560,                                "Two Pair"
+    576,                                "Three Deuces"
+    592,                                "Straight"
+    608,                                "Flush"
+    624,                                "Full House"
+    640,                                "Four Deuces"
+    656,                                "Straight Flush"
+    672,                                "Royal Flush"
+    545,                                "Pair of Threes"
+    546,                                "Pair of Fours"
+    547,                                "Pair of Fives"
+    548,                                "Pair of Sixes"
+    549,                                "Pair of Sevens"
+    550,                                "Pair of Eights"
+    551,                                "Pair of Nines"
+    552,                                "Pair of Tens"
+    553,                                "Pair of Jacks"
+    554,                                "Pair of Queens"
+    555,                                "Pair of Kings"
+    556,                                "Pair of Aces"
+    577,                                "Three Threes"
+    578,                                "Three Fours"
+    579,                                "Three Fives"
+    580,                                "Three Sixes (a ""Tony"")"
+    581,                                "Three Sevens"
+    582,                                "Three Eights"
+    583,                                "Three Nines (Tony hanging from a tree)"
+    584,                                "Three Tens"
+    585,                                "Three Jacks"
+    586,                                "Three Queens"
+    587,                                "Three Kings"
+    588,                                "Three Aces"
+    595,                                "Straight (Five high)"
+    596,                                "Straight (Six high)"
+    597,                                "Straight (Seven high)"
+    598,                                "Straight (Eight high)"
+    599,                                "Straight (Nine high)"
+    600,                                "Straight (Ten high)"
+    601,                                "Straight (Jack high)"
+    602,                                "Straight (Queen high)"
+    603,                                "Straight (King high)"
+    604,                                "Straight (Ace high)"
+    641,                                "Four Threes"
+    642,                                "Four Fours"
+    643,                                "Four Fives"
+    644,                                "Four Sixes"
+    645,                                "Four Sevens"
+    646,                                "Four Eights"
+    647,                                "Four Nines"
+    648,                                "Four Tens"
+    649,                                "Four Jacks"
+    650,                                "Four Queens"
+    651,                                "Four Kings"
+    652,                                "Four Aces"
+    659,                                "Straight Flush (Five high)"
+    660,                                "Straight Flush (Six high)"
+    661,                                "Straight Flush (Seven high)"
+    662,                                "Straight Flush (Eight high)"
+    663,                                "Straight Flush (Nine high)"
+    664,                                "Straight Flush (Ten high)"
+    665,                                "Straight Flush (Jack high)"
+    666,                                "Straight Flush (Queen high)"
+    667,                                "Straight Flush (King high)"
+    CPOKER_PMT_STUD,                               "Caribbean Poker v1.00 - Stud"
+    CPOKER_PMT_DRAW,                               "Caribbean Poker v1.00 - Draw"
+    PMT_JACKPOT,                              "Jackpot: $"
+END

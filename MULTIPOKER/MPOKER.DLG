@@ -1,0 +1,73 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+DLGINCLUDE 1 "MPokerRC.h"
+
+DLGTEMPLATE AboutDlg LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "About Multi Poker", AboutDlg, 88, 40, 192, 115, , FCF_SYSMENU | 
+            FCF_TITLEBAR
+    BEGIN
+        CTEXT           "Multi Poker", -1, 9, 84, 126, 25, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+                        PRESPARAMS PP_FONTNAMESIZE, "24.Tms Rmn"
+        ICON            AboutDlgIcon, AboutDlgIcon, 148, 91, 18, 15, 
+                        WS_GROUP
+        CTEXT           "Version 1.05", -1, 55, 69, 74, 12, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00FFFFFFL
+        CTEXT           "The Compulsive Gambler's Toolkit", -1, 7, 44, 175, 
+                        18, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000080L
+                        PRESPARAMS PP_FONTNAMESIZE, "12.Helv"
+        DEFPUSHBUTTON   "Lose Money", DID_OK, 52, 8, 90, 14
+        CTEXT           "Copyright (C) 1999 IglooSoft", -1, 7, 29, 175, 18, 
+                        DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000080L
+                        PRESPARAMS PP_FONTNAMESIZE, "12.Helv"
+    END
+END
+
+DLGTEMPLATE MainDlg LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "MultiPoker", MainDlg, -95, -157, 576, 349, NOT FS_DLGBORDER | 
+            WS_DISABLED, FCF_NOBYTEALIGN
+    BEGIN
+        VALUESET        MainDlgCards, 37, 57, 337, 135, VS_BITMAP | 
+                        VS_SCALEBITMAPS | WS_GROUP | WS_DISABLED
+                        CTLDATA 8, 0, 1, 5
+        PUSHBUTTON      "Keep/Discard", MainDlgKeep1, 42, 17, 61, 27, 
+                        WS_DISABLED
+        PUSHBUTTON      "Keep/Discard", MainDlgKeep2, 109, 17, 61, 27, 
+                        WS_DISABLED
+        PUSHBUTTON      "Keep/Discard", MainDlgKeep3, 176, 17, 61, 27, 
+                        WS_DISABLED
+        PUSHBUTTON      "Keep/Discard", MainDlgKeep4, 243, 17, 61, 27, 
+                        WS_DISABLED
+        PUSHBUTTON      "Keep/Discard", MainDlgKeep5, 310, 17, 61, 27, 
+                        WS_DISABLED
+        CTEXT           "", MainDlgAction1, 47, 198, 46, 20, DT_VCENTER
+                        PRESPARAMS PP_FONTNAMESIZE, "18.Tms Rmn"
+        CTEXT           "", MainDlgAction2, 117, 198, 46, 20, DT_VCENTER
+                        PRESPARAMS PP_FONTNAMESIZE, "18.Tms Rmn"
+        CTEXT           "", MainDlgAction3, 183, 198, 46, 20, DT_VCENTER
+                        PRESPARAMS PP_FONTNAMESIZE, "18.Tms Rmn"
+        CTEXT           "", MainDlgAction4, 254, 198, 46, 20, DT_VCENTER
+                        PRESPARAMS PP_FONTNAMESIZE, "18.Tms Rmn"
+        CTEXT           "", MainDlgAction5, 320, 198, 46, 20, DT_VCENTER
+                        PRESPARAMS PP_FONTNAMESIZE, "18.Tms Rmn"
+        DEFPUSHBUTTON   "~Deal", DID_OK, 397, 18, 73, 31, WS_DISABLED
+        PUSHBUTTON      "Bet", MainDlgBet, 397, 66, 73, 31, WS_DISABLED
+        PUSHBUTTON      "Bet Five", MainDlgBet5, 397, 114, 73, 31, 
+                        WS_DISABLED
+        PUSHBUTTON      "~Advice", MainDlgAdvice, 494, 114, 73, 31, 
+                        WS_DISABLED
+        PUSHBUTTON      "~Odds", MainDlgOdds, 494, 66, 73, 31, WS_DISABLED
+        LTEXT           "Bank: $0", MainDlgBank, 472, 166, 82, 30, 
+                        DT_VCENTER
+        CTEXT           "", MainDlgHandValue, 53, 248, 367, 20, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+                        PRESPARAMS PP_FONTNAMESIZE, "18.Tms Rmn"
+        LTEXT           "Text", MainDlgHandTable, 129, 315, 20, 8, NOT 
+                        WS_VISIBLE
+    END
+END

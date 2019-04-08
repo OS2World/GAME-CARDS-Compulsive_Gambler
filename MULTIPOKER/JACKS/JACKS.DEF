@@ -1,0 +1,4 @@
+LIBRARY Jacks
+EXPORTS HandValue
+        CalcOdds
+

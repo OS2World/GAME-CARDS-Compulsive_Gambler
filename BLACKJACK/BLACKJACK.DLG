@@ -1,0 +1,48 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+DLGINCLUDE 1 "BlackJackRC.H"
+
+DLGTEMPLATE HandDlg LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Hand", HandDlg, 12, 6, 222, 135, WS_VISIBLE, FCF_TITLEBAR
+    BEGIN
+        PUSHBUTTON      "Hit", HandDlgHit, 8, 4, 40, 14
+        PUSHBUTTON      "Stand", HandDlgStand, 60, 4, 40, 14
+        PUSHBUTTON      "Double", HandDlgDouble, 112, 4, 40, 14
+        PUSHBUTTON      "Split", HandDlgSplit, 164, 4, 40, 14
+    END
+END
+
+DLGTEMPLATE SettingsDlg LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Game Settings", SettingsDlg, 12, 6, 180, 119, WS_VISIBLE, 
+            FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        PUSHBUTTON      "OK", PMT_VERSION, 23, 8, 40, 14
+        PUSHBUTTON      "Cancel", PMT_NODECK, 104, 8, 40, 14
+        AUTOCHECKBOX    "Player can resplit aces", SettingsDlgResplit, 16, 
+                        100, 150, 10
+        AUTOCHECKBOX    "Dealer hits soft 17", SettingsDlgSoft17, 16, 88, 
+                        150, 10
+        AUTOCHECKBOX    "Double 10/11 only", SettingsDlgDouble1011, 16, 76, 
+                        110, 10
+        RTEXT           "Number of decks: ", -1, 4, 57, 99, 12, DT_VCENTER
+        SPINBUTTON      SettingsDlgNumDecks, 103, 58, 33, 12, 
+                        SPBS_NUMERICONLY | SPBS_MASTER | WS_GROUP
+    END
+END
+
+DLGTEMPLATE MainDlg LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "BlackJack v1.00", MainDlg, 12, 6, 252, 162, NOT FS_DLGBORDER | 
+            FS_SIZEBORDER, FCF_SYSMENU | FCF_TITLEBAR | FCF_MINBUTTON | 
+            FCF_MAXBUTTON
+    BEGIN
+        PUSHBUTTON      "Rules", MainDlgRules, 8, 6, 40, 14
+        SLIDER          MainDlgShoe, 204, 55, 23, 95, SLS_VERTICAL | 
+                        SLS_SNAPTOINCREMENT | SLS_RIBBONSTRIP | WS_GROUP
+                        CTLDATA 12, 0, 100, 0, 1, 0
+        PUSHBUTTON      "Deal", MainDlgDeal, 103, 7, 40, 14
+    END
+END

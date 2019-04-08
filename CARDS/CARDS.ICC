@@ -1,0 +1,8 @@
+target "Standard.dll"
+{
+   source type("rc") "Standard.Rc"
+}
+target "DWDeck.dll"
+{
+   source type("rc") "DWDeck.RC"
+}

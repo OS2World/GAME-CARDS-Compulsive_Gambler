@@ -1,0 +1,47 @@
+:TARGET.SUFFIXES
+:TARGET.SUFFIXES
+:DEPENDENCY..C .RC .obj .res 
+:TARGET.all
+:DEPENDENCY.
+.\Jacks.DLL
+:RULE..C.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /I.. /O /Ge- /G5 /C %s
+:RULE.{G:\Programming\Programs\C\CGT\MultiPoker\Jacks}.C.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /I.. /O /Ge- /G5 /C %s
+:RULE..RC.res
+:ACTION.Compile::Resource Compiler
+:COMMAND.
+rc.exe -r %s %|fF.RES
+:RULE.{G:\Programming\Programs\C\CGT\MultiPoker\Jacks}.RC.res
+:ACTION.Compile::Resource Compiler
+:COMMAND.
+rc.exe -r %s %|fF.RES
+:TARGET..\Jacks.DLL
+:DEPENDENCY.
+.\Jacks.obj
+.\Jacks.res
+{$(LIB)}Jacks.DEF
+:ACTION.Link::Linker
+:COMMAND.
+icc.exe @<<
+ /FeJacks.DLL 
+ Jacks.DEF
+ .\Jacks.obj
+<<
+:ACTION.Bind::Resource Bind
+:COMMAND.
+rc.exe .\Jacks.res Jacks.DLL
+:TARGET..\Jacks.obj
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\MultiPoker\Jacks\Jacks.C
+{G:\Programming\Programs\C\CGT\MultiPoker\Jacks;..;$(INCLUDE);}MPokerDLL.H
+{G:\Programming\Programs\C\CGT\MultiPoker\Jacks;..;$(INCLUDE);}Jacks.H
+:TARGET..\Jacks.res
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\MultiPoker\Jacks\Jacks.RC
+{G:\Programming\Programs\C\CGT\MultiPoker\Jacks;$(INCLUDE)}Jacks.H
+..\MPokerDLL.H

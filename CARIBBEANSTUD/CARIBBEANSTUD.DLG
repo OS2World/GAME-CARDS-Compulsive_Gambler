@@ -1,0 +1,142 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+DLGINCLUDE 1 "CaribbeanStudRC.H"
+
+DLGTEMPLATE StatsDlg LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Game Statistics", StatsDlg, 47, 17, 318, 207, , FCF_SYSMENU | 
+            FCF_TITLEBAR
+    BEGIN
+        PUSHBUTTON      "OK", PMT_VERSION, 265, 5, 40, 14
+        PUSHBUTTON      "Reset", StatsDlgReset, 20, 6, 40, 14
+        RTEXT           "Nothing: ", -1, 171, 120, 78, 14, DT_VCENTER
+        RTEXT           "Ace/King: ", -1, 171, 134, 78, 14, DT_VCENTER
+        RTEXT           "Pair: ", -1, 171, 148, 78, 14, DT_VCENTER
+        RTEXT           "Two Pair: ", -1, 171, 162, 78, 14, DT_VCENTER
+        RTEXT           "Three of a Kind: ", -1, 171, 176, 78, 14, 
+                        DT_VCENTER
+        RTEXT           "Straight: ", -1, 14, 106, 78, 14, DT_VCENTER
+        RTEXT           "Flush: ", -1, 14, 120, 78, 14, DT_VCENTER
+        RTEXT           "Full House: ", -1, 14, 134, 78, 14, DT_VCENTER
+        RTEXT           "Four of a Kind: ", -1, 14, 148, 78, 14, DT_VCENTER
+        RTEXT           "Straight Flush: ", -1, 14, 162, 78, 14, DT_VCENTER
+        RTEXT           "Royal Flush: ", -1, 14, 176, 78, 14, DT_VCENTER
+        GROUPBOX        "Player Hands", -1, 4, 96, 150, 107
+        GROUPBOX        "Player Hands", -1, 160, 96, 150, 107
+        LTEXT           "0", StatsDlgHand0, 250, 120, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        LTEXT           "0", 303, 250, 134, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        LTEXT           "0", 304, 250, 148, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        LTEXT           "0", 305, 250, 162, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        LTEXT           "0", 306, 250, 176, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        LTEXT           "0", 307, 93, 106, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        LTEXT           "0", 308, 93, 120, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        LTEXT           "0", 309, 93, 134, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        LTEXT           "0", 310, 93, 148, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        LTEXT           "0", 311, 93, 162, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        LTEXT           "0", 312, 93, 176, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        RTEXT           "Total: ", -1, 171, 106, 78, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00008000L
+        RTEXT           "Win: ", -1, 8, 74, 78, 14, DT_VCENTER
+        RTEXT           "Lose: ", -1, 8, 60, 78, 14, DT_VCENTER
+        RTEXT           "Fold: ", -1, 8, 46, 78, 14, DT_VCENTER
+        LTEXT           "0", StatsDlgTotal, 250, 106, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        RTEXT           "Dealer fold: ", -1, 8, 32, 78, 14, DT_VCENTER
+        GROUPBOX        "Outcomes", -1, 4, 27, 150, 66
+        LTEXT           "0", StatsDlgWin, 86, 74, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        LTEXT           "0", StatsDlgLose, 86, 60, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        LTEXT           "0", StatsDlgFold, 86, 46, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        LTEXT           "0", StatsDlgDealerFold, 86, 32, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        RTEXT           "Money In: ", -1, 171, 74, 78, 14, DT_VCENTER
+        RTEXT           "Money Out: ", -1, 171, 60, 78, 14, DT_VCENTER
+        RTEXT           "Progressives: ", -1, 171, 46, 78, 14, DT_VCENTER
+        RTEXT           "Prog. Payout: ", -1, 171, 32, 78, 14, DT_VCENTER
+        LTEXT           "0", StatsDlgMoneyIn, 250, 74, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        LTEXT           "0", StatsDlgMoneyOut, 250, 60, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        LTEXT           "0", StatsDlgProg, 250, 46, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        LTEXT           "0", StatsDlgProgPayout, 250, 32, 48, 14, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        GROUPBOX        "Money", -1, 160, 27, 150, 66
+    END
+END
+
+DLGTEMPLATE MainDlg LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Caribbean Stud Poker v1.3a", MainDlg, 3, 3, 560, 310, NOT 
+            FS_DLGBORDER | FS_SIZEBORDER, FCF_SYSMENU | FCF_TITLEBAR | 
+            FCF_MINBUTTON | FCF_MAXBUTTON
+    BEGIN
+        VALUESET        MainDlgDealerHand, 184, 214, 192, 64, VS_BITMAP | 
+                        VS_BORDER | VS_SCALEBITMAPS | WS_GROUP | WS_DISABLED
+                        CTLDATA 8, 0, 1, 5
+        VALUESET        MainDlgPlayerHand, 134, 18, 288, 84, VS_BITMAP | 
+                        VS_BORDER | VS_SCALEBITMAPS | WS_GROUP | WS_DISABLED
+                        CTLDATA 8, 0, 1, 5
+        CTEXT           "Sarah", MainDlgDealerName, 226, 284, 103, 18, 
+                        DT_VCENTER
+        CTEXT           "$100,000.00", MainDlgJackpot, 410, 233, 128, 28, 
+                        DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x000000E0L
+        PUSHBUTTON      "<- ~Bet", MainDlgBet, 306, 118, 40, 14, WS_DISABLED
+        PUSHBUTTON      "<- ~Ante", MainDlgAnte, 306, 135, 40, 14
+        PUSHBUTTON      "~Fold", MainDlgFold, 204, 125, 40, 14, WS_DISABLED
+        VALUESET        MainDlgBetField, 251, 113, 52, 41, VS_BITMAP | 
+                        VS_BORDER | VS_SCALEBITMAPS | WS_GROUP | WS_DISABLED
+                        CTLDATA 8, 0, 1, 1
+        SPINBUTTON      MainDlgAnteSpin, 350, 137, 39, 12, SPBS_NUMERICONLY | 
+                        SPBS_MASTER | WS_GROUP
+        VALUESET        MainDlgProgSlot, 253, 164, 50, 35, VS_BITMAP | 
+                        VS_BORDER | VS_SCALEBITMAPS | WS_GROUP | WS_DISABLED
+                        CTLDATA 8, 0, 1, 1
+        PUSHBUTTON      "<-~Progressive", MainDlgProgressive, 308, 176, 74, 
+                        14
+        LTEXT           "100.00", MainDlgBank, 484, 130, 70, 28, DT_VCENTER
+        AUTOCHECKBOX    "Auto", MainDlgProgAuto, 391, 178, 55, 10
+        PUSHBUTTON      "Add $100", MainDlgAddMoney, 467, 110, 48, 14
+        PUSHBUTTON      "Help", MainDlgHelp, 12, 8, 40, 32, BS_HELP
+        PUSHBUTTON      "Ad~vice", MainDlgAdvice, 468, 93, 48, 14, 
+                        WS_DISABLED
+        CTEXT           "", MainDlgAdviceText, 438, 59, 112, 27, DT_VCENTER
+        CTEXT           "", MainDlgPlayerHandValue, 135, 1, 288, 14, 
+                        DT_VCENTER
+        CTEXT           "", MainDlgDealerHandValue, 22, 219, 142, 24, 
+                        DT_VCENTER
+        CTEXT           "Dealer has:", MainDlgDealerHas, 22, 250, 142, 36, 
+                        DT_VCENTER | NOT WS_VISIBLE
+        RTEXT           "Player Paid:", MainDlgPlayerPaid, 16, 158, 104, 44, 
+                        DT_VCENTER | NOT WS_VISIBLE
+        LTEXT           "", MainDlgPlayerPayout, 131, 158, 86, 44, 
+                        DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        CTEXT           "Progressive pays:", MainDlgProgPays, 400, 195, 150, 
+                        29, DT_VCENTER | NOT WS_VISIBLE
+        CTEXT           "", MainDlgProgPayout, 452, 158, 80, 21, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00800000L
+        RTEXT           "Bank $", MainDlgBankText, 427, 130, 50, 28, 
+                        DT_VCENTER
+        CTEXT           "Jackpot", MainDlgJackpotText, 408, 264, 131, 30, 
+                        DT_VCENTER
+        PUSHBUTTON      "E~xit", MainDlgExit, 507, 8, 40, 32
+        PUSHBUTTON      "~Stats", MainDlgStats, 450, 8, 40, 32
+        PUSHBUTTON      "Cash Out", MainDlgCashOut, 512, 111, 48, 14
+    END
+END

@@ -1,0 +1,70 @@
+# makefile
+# Created by IBM WorkFrame/2 MakeMake at 19:47:24 on 8 Feb 1999
+#
+# The actions included in this make file are:
+#  Compile::C++ Compiler
+#  Link::Linker
+#  Bind::Resource Bind
+#  Compile::Resource Compiler
+
+.SUFFIXES:
+
+.SUFFIXES: \
+    .C .RC .obj .res 
+
+.C.obj:
+    @echo " Compile::C++ Compiler "
+    icc.exe /O /G5 /C %s
+
+{G:\Programming\Programs\C\CGT\CaribbeanStud}.C.obj:
+    @echo " Compile::C++ Compiler "
+    icc.exe /O /G5 /C %s
+
+.RC.res:
+    @echo " Compile::Resource Compiler "
+    rc.exe -r %s %|fF.RES
+
+{G:\Programming\Programs\C\CGT\CaribbeanStud}.RC.res:
+    @echo " Compile::Resource Compiler "
+    rc.exe -r %s %|fF.RES
+
+all: \
+    .\caribstd.exe
+
+.\caribstd.exe: \
+    .\Chances.obj \
+    .\Dialogs.obj \
+    .\CaribbeanStud.obj \
+    .\CaribbeanStud.res
+    @echo " Link::Linker "
+    @echo " Bind::Resource Bind "
+    icc.exe @<<
+     /B" /pmtype:pm"
+     /Fecaribstd.exe 
+     .\Chances.obj
+     .\Dialogs.obj
+     .\CaribbeanStud.obj
+<<
+    rc.exe .\CaribbeanStud.res caribstd.exe
+
+.\Chances.obj: \
+    G:\Programming\Programs\C\CGT\CaribbeanStud\Chances.C \
+    {G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE);}CaribbeanStud.H \
+    {G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE);}CaribbeanStudRC.H
+
+.\CaribbeanStud.obj: \
+    G:\Programming\Programs\C\CGT\CaribbeanStud\CaribbeanStud.C \
+    {G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE);}CaribbeanStud.H \
+    {G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE);}CaribbeanStudRC.H
+
+.\Dialogs.obj: \
+    G:\Programming\Programs\C\CGT\CaribbeanStud\Dialogs.C \
+    {G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE);}CaribbeanStud.H \
+    {G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE);}CaribbeanStudRC.H
+
+.\CaribbeanStud.res: \
+    G:\Programming\Programs\C\CGT\CaribbeanStud\CaribbeanStud.RC \
+    {G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE)}CaribbeanStud.dlg \
+    {G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE)}CaribbeanStudRC.H \
+    {G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE)}CaribbeanStud.ICO \
+    {G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE)}CaribbeanStud.H

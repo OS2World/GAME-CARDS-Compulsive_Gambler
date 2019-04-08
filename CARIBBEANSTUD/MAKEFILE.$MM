@@ -1,0 +1,62 @@
+:TARGET.SUFFIXES
+:TARGET.SUFFIXES
+:DEPENDENCY..C .RC .obj .res 
+:TARGET.all
+:DEPENDENCY.
+.\caribstd.exe
+:RULE..C.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /O /G5 /C %s
+:RULE.{G:\Programming\Programs\C\CGT\CaribbeanStud}.C.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /O /G5 /C %s
+:RULE..RC.res
+:ACTION.Compile::Resource Compiler
+:COMMAND.
+rc.exe -r %s %|fF.RES
+:RULE.{G:\Programming\Programs\C\CGT\CaribbeanStud}.RC.res
+:ACTION.Compile::Resource Compiler
+:COMMAND.
+rc.exe -r %s %|fF.RES
+:TARGET..\caribstd.exe
+:DEPENDENCY.
+.\Chances.obj
+.\Dialogs.obj
+.\CaribbeanStud.obj
+.\CaribbeanStud.res
+:ACTION.Link::Linker
+:COMMAND.
+icc.exe @<<
+ /B" /pmtype:pm"
+ /Fecaribstd.exe 
+ .\Chances.obj
+ .\Dialogs.obj
+ .\CaribbeanStud.obj
+<<
+:ACTION.Bind::Resource Bind
+:COMMAND.
+rc.exe .\CaribbeanStud.res caribstd.exe
+:TARGET..\Chances.obj
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\CaribbeanStud\Chances.C
+{G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE);}CaribbeanStud.H
+{G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE);}CaribbeanStudRC.H
+:TARGET..\CaribbeanStud.obj
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\CaribbeanStud\CaribbeanStud.C
+{G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE);}CaribbeanStud.H
+{G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE);}CaribbeanStudRC.H
+:TARGET..\Dialogs.obj
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\CaribbeanStud\Dialogs.C
+{G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE);}CaribbeanStud.H
+{G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE);}CaribbeanStudRC.H
+:TARGET..\CaribbeanStud.res
+:DEPENDENCY.
+G:\Programming\Programs\C\CGT\CaribbeanStud\CaribbeanStud.RC
+{G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE)}CaribbeanStud.dlg
+{G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE)}CaribbeanStudRC.H
+{G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE)}CaribbeanStud.ICO
+{G:\Programming\Programs\C\CGT\CaribbeanStud;$(INCLUDE)}CaribbeanStud.H

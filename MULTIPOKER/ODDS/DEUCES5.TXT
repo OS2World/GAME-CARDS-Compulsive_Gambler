@@ -1,0 +1,24 @@
+Poker Odds Calculator v1.01
+
+
+Start time: Mon Aug  3 19:34:58 1998
+
+Computing probabilities for: Deuces Wild with a $5.00 bet.
+
+Odds for Deuces Wild game
+
+                  Natural hands		Total Chance
+      Natural Royal Flush:          4    61.095954
+                  Four 2s:         48    512.143167
+              Royal flush:        480    5069.987079
+           Five of a kind:        624    8212.366931
+           Straight flush:       2068    11386.333483
+           Four of a kind:      31552    160541.388071
+               Full House:      12672    68028.153453
+                    Flush:      14472    51637.280528
+                 Straight:      62232    145625.313752
+          Three of a kind:     355080    696782.703090
+                  Nothing:    2119728    1451103.234498
+
+Aggregate payout: $12804704.59, or $4.93 on a $5.00 bet (0.9854%)
+End time: Mon Aug  3 20:38:51 1998

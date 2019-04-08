@@ -1,0 +1,75 @@
+/************************************************************************
+ *
+ * File: MPoker.RC
+ *
+ * This is the resource script for the main Multi Poker program.
+ *
+ ************************************************************************/
+#include    <os2.h>
+#include    "MPokerRC.H"
+
+ICON    MainFrame   "MPoker.ICO"
+ICON    AboutDlgIcon    "MPoker.ICO"
+
+MENU    MainFrame
+BEGIN
+    SUBMENU     "~Game", MainGame
+    BEGIN
+        MENUITEM    "New", MainGameNew
+        SUBMENU    "Select", MainGameSelect
+        BEGIN
+        END
+        MENUITEM    SEPARATOR
+        MENUITEM    "Exit\tESC", MainGameExit
+    END
+    SUBMENU     "Help", MainHelp, MIS_HELP
+    BEGIN
+        MENUITEM    "Extended Help", SC_HELPEXTENDED, MIS_SYSCOMMAND
+        MENUITEM    "Keys help", SC_HELPKEYS, MIS_SYSCOMMAND
+        MENUITEM    "Help Index", SC_HELPINDEX, MIS_SYSCOMMAND
+        MENUITEM    SEPARATOR
+        MENUITEM    "About...", MainHelpAbout
+    END
+END
+
+STRINGTABLE     MainFrame
+BEGIN
+    AppName     "Multi Poker"
+    Version         "1.07"
+    BetTitle        "Bet ->"
+    BankText    "Bank: $"
+    Keep        "Keep"
+    Discard     ""
+END
+
+HELPTABLE   MainHelpTable
+BEGIN
+    HELPITEM    MainFrame, MainHelpSubtable, MainExtHelp
+    HELPITEM    MainDlg, MainHelpSubtable, MainExtHelp
+END
+
+HELPSUBTABLE    MainHelpSubtable
+BEGIN
+    HELPSUBITEM MainDlg, MainExtHelp
+END
+
+ACCELTABLE  MainFrame
+BEGIN
+    VK_ESC,   MainGameExit, VIRTUALKEY
+    VK_F5,  MainDlgKeep1, VIRTUALKEY
+    VK_F6,  MainDlgKeep2, VIRTUALKEY
+    VK_F7,  MainDlgKeep3, VIRTUALKEY
+    VK_F8,  MainDlgKeep4, VIRTUALKEY
+    VK_F9,  MainDlgKeep5, VIRTUALKEY
+    VK_F1, SC_HELPEXTENDED, VIRTUALKEY, HELP
+    " ", MainDlgBet5
+    "+",    MainDlgBet
+    "d",    DID_OK
+    "D",    DID_OK
+    "a",    MainDlgAdvice
+    "A", MainDlgAdvice
+    "o",    MainDlgOdds
+    "O",    MainDlgOdds
+END
+
+rcinclude   "MPoker.dlg"

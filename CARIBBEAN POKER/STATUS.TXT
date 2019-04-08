@@ -1,0 +1,61 @@
+Status of Caribbean Poker: Dec 16th, 1999
+
+1. Pays out on folded hands
+
+   - 12/13/99 - Corrected
+
+2. Progressives are not paid out
+
+   - 12/13/99 - Corrected, not tested
+
+3. Progressive jackpot does not show cents
+
+4. Fonts are not scaled
+
+5. Invalid operations are allowed
+
+   - 12/13/99 - Known issues resolved
+   - 12/16/99 - Ability to add/remove ivory after deal needs to be corrected.
+
+6. Draw allows more than two cards to be discarded
+
+   - 12/13/99 - Corrected
+
+7. No sounds
+
+8. Animation speed not selectable
+
+9. Background color not selectable
+
+10. Animation is "clunky".  Too much refreshing.
+
+11. Payout should be animated.
+
+12. Third state of progressive slot not indicated.
+
+13. No help/advice
+
+14. "About" not implemented.
+
+15. Loading alternate languages not supported.
+
+16. Catastrophic failures not detailed.
+
+17. Retained size not scaled to screen size.
+
+18. Executable size excessive
+
+19. Dealer discards incorrect cards during four card flushes and straights
+
+20. Exit button should be added
+
+21. "Cash station" button should be added.
+
+22. Certain parameters are not retained when exit from system close.
+
+
+Windoze Specific Issues:
+
+1. Special code is required to show "wager" field.
+
+2. Cannot change title bar text.
