@@ -1,0 +1,115 @@
+/* Main resource script for Multi Poker */
+#include <os2.h>
+#include "mpokerrc.h"
+
+POINTER MainFrame "mpoker.ico"
+
+MENU MainFrame
+BEGIN
+    SUBMENU "~Game", MainGame
+    BEGIN
+        MENUITEM "~New Game\tCtrl+N", MainGameNew
+        SUBMENU "~Select", MainGameSelect
+        BEGIN
+            MENUITEM "-", 1141
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "E~xit\tCtrl+X", MainGameExit
+    END
+    SUBMENU "~Options", MainOptions
+    BEGIN
+        SUBMENU "~Sound", MainOptionsSound
+        BEGIN
+            MENUITEM "~On", MainSoundOn
+            MENUITEM "O~ff", MainSoundOff
+        END
+        SUBMENU "~Language", MainOptionsLang
+        BEGIN
+            MENUITEM "English", MainLang0
+            MENUITEM "Espanol", MainLang1
+            MENUITEM "Nederlands", MainLang2
+            MENUITEM "Deutsch", MainLang3
+            MENUITEM "Francais", MainLang4
+            MENUITEM "Italiano", MainLang5
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "~Frame Controls\tCtrl+F", MainOptionsFrame
+        MENUITEM SEPARATOR
+        MENUITEM "S~ave settings on exit", MainOptionsSave
+    END
+    SUBMENU "~Help", MainHelp
+    BEGIN
+        MENUITEM "~General Help", MainHelpGeneral
+        MENUITEM "Help ~Index", MainHelpIndex
+        MENUITEM "~Help on Help", MainHelpOnHelp
+        MENUITEM SEPARATOR
+        MENUITEM "~About...", MainHelpAbout
+    END
+END
+
+ACCELTABLE MainFrame
+BEGIN
+    "n", MainGameNew, CONTROL
+    "N", MainGameNew, CONTROL
+    "x", MainGameExit, CONTROL
+    "X", MainGameExit, CONTROL
+    "f", MainOptionsFrame, CONTROL
+    "F", MainOptionsFrame, CONTROL
+    VK_F5, MainDlgKeep1, VIRTUALKEY
+    VK_F6, MainDlgKeep2, VIRTUALKEY
+    VK_F7, MainDlgKeep3, VIRTUALKEY
+    VK_F8, MainDlgKeep4, VIRTUALKEY
+    VK_F9, MainDlgKeep5, VIRTUALKEY
+    "1", MainDlgKeep1
+    "2", MainDlgKeep2
+    "3", MainDlgKeep3
+    "4", MainDlgKeep4
+    "5", MainDlgKeep5
+    " ", MainDlgBet5
+    "+", MainDlgBet
+    "d", MainDlgDeal
+    "D", MainDlgDeal
+    "a", MainDlgAdvice
+    "A", MainDlgAdvice
+    "o", MainDlgOdds
+    "O", MainDlgOdds
+    VK_F1, MainHelpGeneral, VIRTUALKEY
+END
+
+/* About dialog (standard layout, never translated) */
+DLGTEMPLATE AboutDlg
+BEGIN
+    DIALOG "About Multi Poker", 0, 32, 24, 240, 110, , FCF_TITLEBAR | FCF_DLGBORDER
+    BEGIN
+        CTEXT "Multi Poker for OS/2",               -1, 10, 90, 220, 8
+        CTEXT "Version 1.20",                       -1, 10, 78, 220, 8
+        CTEXT "OpenWatcom Release",                 -1, 10, 66, 220, 8
+        CTEXT "(c) 1999, IglooSoft",                -1, 10, 54, 220, 8
+        CTEXT "(c) 2026, OS2World",                 -1, 10, 42, 220, 8
+        CTEXT "GNU GPL V3",                         -1, 10, 30, 220, 8
+        DEFPUSHBUTTON "Close", DID_OK,                 98, 10, 44, 14, WS_GROUP
+    END
+END
+
+/* Help tables */
+HELPTABLE HID_MAIN
+BEGIN
+    HELPITEM MainFrame, HID_SUBTABLE, HID_GENERAL
+END
+
+HELPSUBTABLE HID_SUBTABLE
+BEGIN
+    HELPSUBITEM MainGameNew, HID_PLAYING
+    HELPSUBITEM MainGameSelect, HID_GAMES
+    HELPSUBITEM MainGameExit, HID_MENUS
+    HELPSUBITEM MainSoundOn, HID_MENUS
+    HELPSUBITEM MainSoundOff, HID_MENUS
+    HELPSUBITEM MainOptionsFrame, HID_MENUS
+    HELPSUBITEM MainOptionsSave, HID_MENUS
+    HELPSUBITEM MainDlgAdvice, HID_ODDS
+    HELPSUBITEM MainDlgOdds, HID_ODDS
+    HELPSUBITEM MainHelpAbout, HID_ABOUT
+    HELPSUBITEM MainHelpGeneral, HID_GENERAL
+    HELPSUBITEM MainHelpIndex, HID_GENERAL
+    HELPSUBITEM MainHelpOnHelp, HID_GENERAL
+END

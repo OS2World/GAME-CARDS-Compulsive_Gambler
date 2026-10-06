@@ -1,0 +1,166 @@
+/* Main resource script for Caribbean Stud Poker */
+#include <os2.h>
+#include "cstudrc.h"
+
+POINTER MainFrame "cstud.ico"
+
+BITMAP  BitmapBet           "BET.BMP"
+BITMAP  BitmapAnte          "ANTE.BMP"
+BITMAP  BitmapEmpty         "EMPTY.BMP"
+BITMAP  BitmapProgEmpty     "PROGEMPTY.BMP"
+BITMAP  BitmapProgFull      "PROGFULL.BMP"
+
+MENU MainFrame
+BEGIN
+    SUBMENU "~Game", MainGame
+    BEGIN
+        MENUITEM "~New Game\tCtrl+N", MainGameNew
+        MENUITEM "Add ~$100", MainGameAdd100
+        MENUITEM "~Cash Out", MainGameCashOut
+        MENUITEM "S~tatistics...\tS", MainGameStats
+        MENUITEM SEPARATOR
+        MENUITEM "E~xit\tCtrl+X", MainGameExit
+    END
+    SUBMENU "~Options", MainOptions
+    BEGIN
+        SUBMENU "~Sound", MainOptionsSound
+        BEGIN
+            MENUITEM "~On", MainSoundOn
+            MENUITEM "O~ff", MainSoundOff
+        END
+        SUBMENU "~Language", MainOptionsLang
+        BEGIN
+            MENUITEM "English", MainLang0
+            MENUITEM "Espanol", MainLang1
+            MENUITEM "Nederlands", MainLang2
+            MENUITEM "Deutsch", MainLang3
+            MENUITEM "Francais", MainLang4
+            MENUITEM "Italiano", MainLang5
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "~Frame Controls\tCtrl+F", MainOptionsFrame
+        MENUITEM SEPARATOR
+        MENUITEM "S~ave settings on exit", MainOptionsSave
+    END
+    SUBMENU "~Help", MainHelp
+    BEGIN
+        MENUITEM "~General Help", MainHelpGeneral
+        MENUITEM "Help ~Index", MainHelpIndex
+        MENUITEM "~Help on Help", MainHelpOnHelp
+        MENUITEM SEPARATOR
+        MENUITEM "~About...", MainHelpAbout
+    END
+END
+
+ACCELTABLE MainFrame
+BEGIN
+    "n", MainGameNew, CONTROL
+    "N", MainGameNew, CONTROL
+    "x", MainGameExit, CONTROL
+    "X", MainGameExit, CONTROL
+    "f", MainOptionsFrame, CONTROL
+    "F", MainOptionsFrame, CONTROL
+    "a", MainDlgAnte
+    "A", MainDlgAnte
+    "b", MainDlgBet
+    "B", MainDlgBet
+    "f", MainDlgFold
+    "F", MainDlgFold
+    "v", MainDlgAdvice
+    "V", MainDlgAdvice
+    "s", MainGameStats
+    "S", MainGameStats
+    VK_F1, MainHelpGeneral, VIRTUALKEY
+END
+
+/* Statistics dialog */
+DLGTEMPLATE StatsDlg
+BEGIN
+    DIALOG  "Game Statistics", StatsDlg, 47, 17, 318, 207, , FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        DEFPUSHBUTTON   "OK", DID_OK, 265, 5, 40, 14, WS_GROUP
+        PUSHBUTTON      "Reset", StatsDlgReset, 20, 6, 50, 14
+        RTEXT           "Nothing: ", StatsDlgName0, 171, 120, 78, 14, DT_VCENTER
+        RTEXT           "Ace/King: ", 331, 171, 134, 78, 14, DT_VCENTER
+        RTEXT           "Pair: ", 332, 171, 148, 78, 14, DT_VCENTER
+        RTEXT           "Two Pair: ", 333, 171, 162, 78, 14, DT_VCENTER
+        RTEXT           "Three of a Kind: ", 334, 171, 176, 78, 14, DT_VCENTER
+        RTEXT           "Straight: ", 335, 14, 106, 78, 14, DT_VCENTER
+        RTEXT           "Flush: ", 336, 14, 120, 78, 14, DT_VCENTER
+        RTEXT           "Full House: ", 337, 14, 134, 78, 14, DT_VCENTER
+        RTEXT           "Four of a Kind: ", 338, 14, 148, 78, 14, DT_VCENTER
+        RTEXT           "Straight Flush: ", 339, 14, 162, 78, 14, DT_VCENTER
+        RTEXT           "Royal Flush: ", 340, 14, 176, 78, 14, DT_VCENTER
+        GROUPBOX        "Player Hands", StatsDlgGrpHands1, 4, 96, 150, 107
+        GROUPBOX        "Player Hands", StatsDlgGrpHands2, 160, 96, 150, 107
+        LTEXT           "0", StatsDlgHand0, 250, 120, 48, 14, DT_VCENTER
+        LTEXT           "0", 303, 250, 134, 48, 14, DT_VCENTER
+        LTEXT           "0", 304, 250, 148, 48, 14, DT_VCENTER
+        LTEXT           "0", 305, 250, 162, 48, 14, DT_VCENTER
+        LTEXT           "0", 306, 250, 176, 48, 14, DT_VCENTER
+        LTEXT           "0", 307, 93, 106, 48, 14, DT_VCENTER
+        LTEXT           "0", 308, 93, 120, 48, 14, DT_VCENTER
+        LTEXT           "0", 309, 93, 134, 48, 14, DT_VCENTER
+        LTEXT           "0", 310, 93, 148, 48, 14, DT_VCENTER
+        LTEXT           "0", 311, 93, 162, 48, 14, DT_VCENTER
+        LTEXT           "0", 312, 93, 176, 48, 14, DT_VCENTER
+        RTEXT           "Total: ", StatsDlgLblTotal, 171, 106, 78, 14, DT_VCENTER
+        LTEXT           "0", StatsDlgTotal, 250, 106, 48, 14, DT_VCENTER
+        RTEXT           "Win: ", StatsDlgLblWin, 8, 74, 78, 14, DT_VCENTER
+        RTEXT           "Lose: ", StatsDlgLblLose, 8, 60, 78, 14, DT_VCENTER
+        RTEXT           "Fold: ", StatsDlgLblFold, 8, 46, 78, 14, DT_VCENTER
+        RTEXT           "Dealer fold: ", StatsDlgLblDealerFold, 8, 32, 78, 14, DT_VCENTER
+        GROUPBOX        "Outcomes", StatsDlgGrpOutcomes, 4, 27, 150, 66
+        LTEXT           "0", StatsDlgWin, 90, 74, 60, 14, DT_VCENTER
+        LTEXT           "0", StatsDlgLose, 90, 60, 60, 14, DT_VCENTER
+        LTEXT           "0", StatsDlgFold, 90, 46, 60, 14, DT_VCENTER
+        LTEXT           "0", StatsDlgDealerFold, 90, 32, 60, 14, DT_VCENTER
+        RTEXT           "Money In: ", StatsDlgLblMoneyIn, 165, 74, 78, 14, DT_VCENTER
+        RTEXT           "Money Out: ", StatsDlgLblMoneyOut, 165, 60, 78, 14, DT_VCENTER
+        RTEXT           "Progressives: ", StatsDlgLblProg, 165, 46, 78, 14, DT_VCENTER
+        RTEXT           "Prog. Payout: ", StatsDlgLblProgPayout, 165, 32, 78, 14, DT_VCENTER
+        LTEXT           "0", StatsDlgMoneyIn, 246, 74, 62, 14, DT_VCENTER
+        LTEXT           "0", StatsDlgMoneyOut, 246, 60, 62, 14, DT_VCENTER
+        LTEXT           "0", StatsDlgProg, 246, 46, 62, 14, DT_VCENTER
+        LTEXT           "0", StatsDlgProgPayout, 246, 32, 62, 14, DT_VCENTER
+        GROUPBOX        "Money", StatsDlgGrpMoney, 160, 27, 150, 66
+    END
+END
+
+/* About dialog (standard layout, never translated) */
+DLGTEMPLATE AboutDlg
+BEGIN
+    DIALOG "About Caribbean Stud Poker", 0, 32, 24, 240, 110, , FCF_TITLEBAR | FCF_DLGBORDER
+    BEGIN
+        CTEXT "Caribbean Stud Poker for OS/2",      -1, 10, 90, 220, 8
+        CTEXT "Version 1.20",                       -1, 10, 78, 220, 8
+        CTEXT "OpenWatcom Release",                 -1, 10, 66, 220, 8
+        CTEXT "(c) 1999, IglooSoft",                -1, 10, 54, 220, 8
+        CTEXT "(c) 2026, OS2World",                 -1, 10, 42, 220, 8
+        CTEXT "GNU GPL V3",                         -1, 10, 30, 220, 8
+        DEFPUSHBUTTON "Close", DID_OK,                 98, 10, 44, 14, WS_GROUP
+    END
+END
+
+/* Help tables */
+HELPTABLE HID_MAIN
+BEGIN
+    HELPITEM MainFrame, HID_SUBTABLE, HID_GENERAL
+END
+
+HELPSUBTABLE HID_SUBTABLE
+BEGIN
+    HELPSUBITEM MainGameNew, HID_BEGIN
+    HELPSUBITEM MainGameAdd100, HID_BEGIN
+    HELPSUBITEM MainGameCashOut, HID_BEGIN
+    HELPSUBITEM MainGameStats, HID_STATS
+    HELPSUBITEM MainGameExit, HID_HOTKEYS
+    HELPSUBITEM MainSoundOn, HID_HOTKEYS
+    HELPSUBITEM MainSoundOff, HID_HOTKEYS
+    HELPSUBITEM MainOptionsFrame, HID_HOTKEYS
+    HELPSUBITEM MainOptionsSave, HID_HOTKEYS
+    HELPSUBITEM MainHelpAbout, HID_ABOUT
+    HELPSUBITEM MainHelpGeneral, HID_GENERAL
+    HELPSUBITEM MainHelpIndex, HID_GENERAL
+    HELPSUBITEM MainHelpOnHelp, HID_GENERAL
+END

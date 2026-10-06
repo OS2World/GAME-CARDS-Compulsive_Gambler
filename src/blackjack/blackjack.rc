@@ -1,0 +1,113 @@
+/* Main resource script for Blackjack */
+#include <os2.h>
+#include "blackjackrc.h"
+
+POINTER MainFrame "blackjack.ico"
+
+BITMAP  Chip5Bitmap "5DOLLAR.BMP"
+
+MENU MainFrame
+BEGIN
+    SUBMENU "~Game", MainGame
+    BEGIN
+        MENUITEM "~New Game\tCtrl+N", MainGameNew
+        MENUITEM "Add ~$100", MainGameAdd100
+        MENUITEM "~Cash Out", MainGameCashOut
+        MENUITEM SEPARATOR
+        MENUITEM "E~xit\tCtrl+X", MainGameExit
+    END
+    SUBMENU "~Options", MainOptions
+    BEGIN
+        SUBMENU "~Sound", MainOptionsSound
+        BEGIN
+            MENUITEM "~On", MainSoundOn
+            MENUITEM "O~ff", MainSoundOff
+        END
+        MENUITEM "~Rules...", MainOptionsRules
+        MENUITEM SEPARATOR
+        SUBMENU "~Language", MainOptionsLang
+        BEGIN
+            MENUITEM "English", MainLang0
+            MENUITEM "Espanol", MainLang1
+            MENUITEM "Nederlands", MainLang2
+            MENUITEM "Deutsch", MainLang3
+            MENUITEM "Francais", MainLang4
+            MENUITEM "Italiano", MainLang5
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "~Frame Controls\tCtrl+F", MainOptionsFrame
+        MENUITEM SEPARATOR
+        MENUITEM "S~ave settings on exit", MainOptionsSave
+    END
+    SUBMENU "~Help", MainHelp
+    BEGIN
+        MENUITEM "~General Help", MainHelpGeneral
+        MENUITEM "Help ~Index", MainHelpIndex
+        MENUITEM "~Help on Help", MainHelpOnHelp
+        MENUITEM SEPARATOR
+        MENUITEM "~About...", MainHelpAbout
+    END
+END
+
+ACCELTABLE MainFrame
+BEGIN
+    "n", MainGameNew, CONTROL
+    "N", MainGameNew, CONTROL
+    "x", MainGameExit, CONTROL
+    "X", MainGameExit, CONTROL
+    "f", MainOptionsFrame, CONTROL
+    "F", MainOptionsFrame, CONTROL
+END
+
+/* Rules dialog */
+DLGTEMPLATE SettingsDlg
+BEGIN
+    DIALOG "Game Rules", SettingsDlg, 12, 6, 190, 119, , FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        AUTOCHECKBOX    "Player can resplit aces", SettingsDlgResplit, 16, 100, 160, 10
+        AUTOCHECKBOX    "Dealer hits soft 17", SettingsDlgSoft17, 16, 88, 160, 10
+        AUTOCHECKBOX    "Double 10/11 only", SettingsDlgDouble1011, 16, 76, 160, 10
+        RTEXT           "Number of decks: ", SettingsDlgNumLabel, 4, 57, 109, 12, DT_VCENTER
+        SPINBUTTON      SettingsDlgNumDecks, 117, 58, 33, 12, SPBS_NUMERICONLY | SPBS_MASTER | WS_GROUP
+        DEFPUSHBUTTON   "OK", DID_OK, 23, 8, 56, 14, WS_GROUP
+        PUSHBUTTON      "Cancel", DID_CANCEL, 111, 8, 56, 14
+    END
+END
+
+/* About dialog (standard layout, never translated) */
+DLGTEMPLATE AboutDlg
+BEGIN
+    DIALOG "About Blackjack", 0, 32, 24, 240, 110, , FCF_TITLEBAR | FCF_DLGBORDER
+    BEGIN
+        CTEXT "Blackjack for OS/2",                 -1, 10, 90, 220, 8
+        CTEXT "Version 1.20",                       -1, 10, 78, 220, 8
+        CTEXT "OpenWatcom Release",                 -1, 10, 66, 220, 8
+        CTEXT "(c) 1999, IglooSoft",                -1, 10, 54, 220, 8
+        CTEXT "(c) 2026, OS2World",                 -1, 10, 42, 220, 8
+        CTEXT "GNU GPL V3",                         -1, 10, 30, 220, 8
+        DEFPUSHBUTTON "Close", DID_OK,                 98, 10, 44, 14, WS_GROUP
+    END
+END
+
+/* Help tables */
+HELPTABLE HID_MAIN
+BEGIN
+    HELPITEM MainFrame, HID_SUBTABLE, HID_GENERAL
+END
+
+HELPSUBTABLE HID_SUBTABLE
+BEGIN
+    HELPSUBITEM MainGameNew, HID_PLAYING
+    HELPSUBITEM MainGameAdd100, HID_PLAYING
+    HELPSUBITEM MainGameCashOut, HID_PLAYING
+    HELPSUBITEM MainGameExit, HID_MENUS
+    HELPSUBITEM MainSoundOn, HID_MENUS
+    HELPSUBITEM MainSoundOff, HID_MENUS
+    HELPSUBITEM MainOptionsRules, HID_RULES
+    HELPSUBITEM MainOptionsFrame, HID_MENUS
+    HELPSUBITEM MainOptionsSave, HID_MENUS
+    HELPSUBITEM MainHelpAbout, HID_ABOUT
+    HELPSUBITEM MainHelpGeneral, HID_GENERAL
+    HELPSUBITEM MainHelpIndex, HID_GENERAL
+    HELPSUBITEM MainHelpOnHelp, HID_GENERAL
+END

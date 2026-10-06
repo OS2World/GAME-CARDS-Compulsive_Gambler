@@ -1,0 +1,19 @@
+# Build output - never commit
+bin/*
+
+# Editor / OS droppings
+*.obj
+*.res
+*.err
+*.log
+compile-wat.log
+
+# OS/2 temporary files
+*.tmp
+*~
+*.BAK
+*.map
+*.dll
+
+# Runtime files
+*.cfg

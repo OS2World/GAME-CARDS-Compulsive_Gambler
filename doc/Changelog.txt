@@ -1,0 +1,70 @@
+The Compulsive Gambler's Toolkit - Changelog
+============================================
+
+Version 1.20 (2026-10-06) - first release for OS/2 and ArcaOS
+-------------------------------------------------------------
+All games share the same version number. Common to all of them:
+
+- Built with Open Watcom 2.0 (wmake, wcc386, wlink, wrc, wipfc)
+- License changed to GNU GPL v3 or later
+- Project layout src/, bin/, doc/, help/, sounds/, legacy/
+- 1024x768 window, menus Game / Options / Help, About dialog
+- Shortcuts Ctrl+N New game, Ctrl+X Exit, Ctrl+F Frame Controls
+- Six language user interface (English, Spanish, Dutch, German, French,
+  Italian) and online help in six languages, switched at run time
+- Sound effects from the sounds folder, settings in a .cfg file next to the exe
+- Card decks are loaded from the decks folder (decks\STANDARD.DLL)
+- Card order of the deck library handled in rank order
+
+Caribbean Poker
+---------------
+- Rewritten in C for Open Watcom 2.0 (the original was an unfinished C++
+  program for the IBM Open Class library); window with menus, 1024x768
+- Stud and Draw variants (Game menu); in Draw click up to two cards to discard
+- Fixed the known problems of the original: the progressive jackpot is paid
+  only with the chip in, flushes are compared by their highest card, the
+  dealer discards by a clean strategy (four card flushes and straights)
+- Advice button, Cash menu (add $100, cash out), Exit button, About dialog
+- Six language user interface and online help (help\CPoker_xx.hlp), hand
+  names in six languages, settings in CPoker.cfg, sounds
+
+Caribbean Stud Poker
+--------------------
+- Ported to Open Watcom 2.0; the main dialog became a normal window with
+  menus (Game / Options / Help), 1024x768
+- Six language user interface and online help (help\CStud_xx.hlp)
+- Settings, bank, jackpot and statistics are stored in CStud.cfg
+- Card order of the deck library fixed (rank order)
+- Shortcuts Ctrl+N, Ctrl+X, Ctrl+F; game keys A, B, F, V, S
+- Standard About dialog; sound effects from sounds\
+
+Multi Poker
+-----------
+- Ported to Open Watcom 2.0; new window with menus, 1024x768
+- Game libraries (Jacks or Better, Bonus Deluxe, Deuces Wild) are found in
+  the games folder; card decks in the decks folder (new DWDECK.DLL with the
+  wild deuces)
+- Game and hand names in six languages, stored in the game libraries
+- The payout table highlights the wager column and the hand won
+- The Odds button now shows the probabilities and the expected payout
+- The game played last and the bank are remembered (MPoker.cfg)
+- Six language online help, About dialog, sounds
+- New text mode tool Odds.exe (ported from the original Odds calculator)
+
+Blackjack
+---------
+- Ported the build to Open Watcom 2.0 (wmake, wcc386, wlink, wrc, wipfc)
+- License changed to GNU GPL v3 or later
+- New project layout: src/, bin/, doc/, help/, sounds/, legacy/
+- Deck libraries are loaded from decks\ next to the exe (decks\STANDARD.DLL)
+- Sound effects are loaded from sounds\ next to the exe
+- Menus: Game (New, Add $100, Cash Out, Exit) / Options / Help
+- Shortcuts: Ctrl+N New, Ctrl+X Exit, Ctrl+F Frame Controls
+- Options: Settings, Rules, Sound, Language, Frame Controls, Save on exit
+- Main window opens at 1024x768, centered
+- Six language user interface: English, Spanish, Dutch, German, French,
+  Italian; menus, dialogs, in-game text and help switch at run time
+- Online help in six languages (help\BJack_xx.hlp, next to the exe)
+- Standard About dialog
+- Settings, bank and bet are stored in BJack.cfg
+- Fixed insurance: it now pays 2 to 1 when the dealer has Blackjack
