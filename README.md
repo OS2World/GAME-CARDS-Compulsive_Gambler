@@ -4,6 +4,8 @@ Casino games for OS/2 and ArcaOS, written by IglooSoft in 1999 and released as
 open source in 2002. This is version **1.20**, ported to Open Watcom 2.0 by the
 OS2World community (2026).
 
+![Compulsive ScreenShot](/doc/Compulsive.png)
+
 | Program | Game |
 |---------|------|
 | `BJack.exe` | Blackjack |
